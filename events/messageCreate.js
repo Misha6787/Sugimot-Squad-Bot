@@ -1,7 +1,17 @@
-module.exports = (bot, message) => {
+module.exports = async (bot, message) => {
     if (message.author.bot) return;
 
     const {content, author, guild} = message;
+
+    // const User = await bot.Users.findOne({id: author.id})
+    // console.log(User)
+    // if (User == null) {
+    //     const newUser = new bot.Users({
+    //         id: author.id,
+    //         username: author.username
+    //     })
+    //     newUser.save()
+    // }
 
     if (content.substr(0, bot.Memory.guilds[guild.id].prefix.length) !== bot.Memory.guilds[guild.id].prefix) return;
 

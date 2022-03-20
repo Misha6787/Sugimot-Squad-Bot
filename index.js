@@ -2,18 +2,39 @@ const Discord = require('discord.js');
 let fs = require('fs');
 let config = require('./config.json');
 const DiscordDB = require('simple-discord.db');
+const mongoose = require('mongoose')
+mongoose.connect(config.mongo_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+
+
+
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
 const bot = new Discord.Client(config.cfg);
 
 bot.login(config.token);
 
-//process.env.BOT_TOKEN
+const User = require('./schema/messageSchema')
+//bot.messageSchema = messageSchema
+
+//const MyModel = mongoose.model('User', messageSchema, 'Users')
+
+const dbConnection = mongoose.connection;
+
+dbConnection.on('error', err => {
+    console.log('error', err)
+})
+dbConnection.once('open', () => {
+    console.log('we are connected')
+})
+
+bot.User = User
 
 require("./events/index")(bot);
-// bot.on('voiceStateUpdate', function (oldMember, newMember) {
-//     console.log(newMember);
-// });
+
 bot.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync("./commands/textCommands");

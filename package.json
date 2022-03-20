@@ -15,6 +15,7 @@
     "discord.js": "^13.3.1",
     "djs-voice": "^1.2.0",
     "libsodium-wrappers": "^0.7.9",
+    "mongoose": "^6.2.7",
     "simple-discord.db": "^0.0.5"
   }
 }
