@@ -1,0 +1,722 @@
+{
+  "month_1": {
+    "nameAnime": "Клинок, рассекающий демонов",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": "Hashira"
+      },
+      "10": {
+        "receivingGif": "https://tenor.com/view/demon-slayer-anime-anime-girl-gif-22274247",
+        "profileGif": "https://tenor.com/view/shinobu-kocho-demon-slayer-hashira-gif-22643648",
+        "nameRole": "Konchuu no Hashira"
+      },
+      "20": {
+        "receivingGif": "https://tenor.com/view/kimetsu-no-yaiba-gif-22003444",
+        "profileGif": "https://tenor.com/view/obanai-demon-slayer-gif-20404473",
+        "nameRole": "Hebi no Hashira"
+      },
+      "30": {
+        "receivingGif": "https://tenor.com/view/demon-slayer-tengen-uzui-entertainment-district-arc-kimetsu-no-yaiba-gif-24028296",
+        "profileGif": "https://tenor.com/view/tengen-uzui-tengen-kimetsu-no-yaiba-demon-slayer-gif-24622144",
+        "nameRole": "Ne no Hashira"
+      },
+      "40": {
+        "receivingGif": "https://tenor.com/view/mitsuri-kanroji-anime-in-love-blushing-kimetsu-no-yaiba-gif-15742146",
+        "profileGif": "https://tenor.com/view/demon-slayer-kimetsu-no-yaiba-manga-series-love-hashira-gif-17176816",
+        "nameRole": "A no hashira"
+      },
+      "50": {
+        "receivingGif": "https://tenor.com/view/giyuu-tomioka-demon-slayer-anime-sword-gif-17098044",
+        "profileGif": "https://tenor.com/view/kimetsu-no-yaiba-demon-slayer-kny-anime-giyuu-tomioka-gif-17703662",
+        "nameRole": "Mizuno Hashira"
+      },
+      "60": {
+        "receivingGif": "https://tenor.com/view/rengoku-kyojuro-demon-slayer-anime-gif-23525456",
+        "profileGif": "https://tenor.com/view/demon-slayer-rengoku-gif-23414714",
+        "nameRole": "En no Hashira"
+      },
+      "70": {
+        "receivingGif": "https://tenor.com/view/demon-slayer-gif-21432840",
+        "profileGif": "https://tenor.com/view/muichiro-takito-demon-slayer-kny-anime-gif-19362364",
+        "nameRole": "Kiri no Hashira"
+      },
+      "80": {
+        "receivingGif": "https://tenor.com/view/sanemi-shinazugawa-sanemi-shinazugawa-wind-hashira-demon-slayer-gif-21418570",
+        "profileGif": "https://tenor.com/view/kimetsu-no-yaiba-demon-slayer-demon-slayer-corps-the-wind-hashira-sanemi-shinazugawa-gif-17177106",
+        "nameRole": "Fu no Hashira"
+      },
+      "90": {
+        "receivingGif": "https://tenor.com/view/himejima-himejima-gyomei-kimetsu-no-yaiba-demon-slayer-gyomei-gif-24930089",
+        "profileGif": "https://tenor.com/view/dubs-demon-slayer-hashira-anime-gif-18029886",
+        "nameRole": "Ishi no Hashira"
+      },
+      "100": {
+        "receivingGif": "https://tenor.com/view/yoriichi-gif-21991850",
+        "profileGif": "https://tenor.com/view/demon-slayer-yoriichi-demon-slayer-gif-24462724",
+        "nameRole": "Taiyou no Hashira"
+      }
+    }
+  },
+  "month_2": {
+    "nameAnime": "Наруто",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": "Bijou"
+      },
+      "10": {
+        "receivingGif": "https://tenor.com/view/shukaku-gif-20675347",
+        "profileGif": "https://tenor.com/view/naruto-fuuton-isako-kazekage-gaara-gif-21315751",
+        "nameRole": "Shukaku"
+      },
+      "20": {
+        "receivingGif": "https://tenor.com/view/matatabi-naruto-anime-bijuu-two-tails-gif-17610422",
+        "profileGif": "https://tenor.com/view/matatabi-power-up-yugito-naruto-anime-gif-11590579",
+        "nameRole": "Matatabi"
+      },
+      "30": {
+        "receivingGif": "https://tenor.com/view/isobu-naruto-jinchuriki-gif-15488989",
+        "profileGif": "https://tenor.com/view/isobu-gif-21020929",
+        "nameRole": "Isobu"
+      },
+      "40": {
+        "receivingGif": "https://tenor.com/view/songoku-gif-18745885",
+        "profileGif": "https://tenor.com/view/songoku-gif-18745885",
+        "nameRole": "Son Goku"
+      },
+      "50": {
+        "receivingGif": "https://tenor.com/view/biju-kokuou-dama-gif-22669869",
+        "profileGif": "https://tenor.com/view/biju-kokuou-dama-gif-22669869",
+        "nameRole": "Kokuou"
+      },
+      "60": {
+        "receivingGif": "https://tenor.com/view/saiken-utakata-naruto-jinch%C5%ABriki-gif-15297056",
+        "profileGif": "https://tenor.com/view/saiken-utakata-naruto-jinch%C5%ABriki-gif-15297056",
+        "nameRole": "Saiken"
+      },
+      "70": {
+        "receivingGif": "https://tenor.com/view/naruto-tailed-beast-bijuu-anime-ch%C5%8Dmei-gif-17001277",
+        "profileGif": "https://tenor.com/view/chomei-tailed-beast-bomb-chomei-tailed-beast-tailed-beast-bomb-naruto-gif-24503695",
+        "nameRole": "Choumei"
+      },
+      "80": {
+        "receivingGif": "https://tenor.com/view/gyuuki-gif-19011525",
+        "profileGif": "https://tenor.com/view/gyuki-bijuu-killer-bee-roar-jinchuuriki-vs-jinchuuriki-gif-19222709",
+        "nameRole": "Gyuki"
+      },
+      "90": {
+        "receivingGif": "https://tenor.com/view/kurama-naruto-smile-naruto-shippuden-anime-gif-17477767",
+        "profileGif": "https://tenor.com/view/kurama-novecaudas-naruto-gif-5646271",
+        "nameRole": "Kurama"
+      },
+      "100": {
+        "receivingGif": "https://tenor.com/view/juubi-boruto-gif-18001368",
+        "profileGif": "https://tenor.com/view/ten-tails-juubi-gif-19162468",
+        "nameRole": "Juubi"
+      }
+    }
+  },
+  "month_3": {
+    "nameAnime": "Токийский Гуль",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": "Ghoul"
+      },
+      "10": {
+        "receivingGif": "https://tenor.com/view/sherrybirkin-hide-nagachika-tokyo-ghoul-gif-9646259",
+        "profileGif": "https://tenor.com/view/sherrybirkin-hide-nagachika-tokyo-ghoul-gif-9646259",
+        "nameRole": "C"
+      },
+      "20": {
+        "receivingGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "profileGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "nameRole": "B"
+      },
+      "30": {
+        "receivingGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "profileGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "nameRole": "B+"
+      },
+      "40": {
+        "receivingGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "profileGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "nameRole": "A"
+      },
+      "50": {
+        "receivingGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "profileGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "nameRole": "A-"
+      },
+      "60": {
+        "receivingGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "profileGif": "https://tenor.com/view/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0-%D0%B3%D1%83%D0%BB%D1%8C-ghoul-gif-21310065",
+        "nameRole": "A+"
+      },
+      "70": {
+        "receivingGif": "https://tenor.com/view/rize-tokyo-ghoul-attack-charge-incoming-gif-10424433",
+        "profileGif": "https://tenor.com/view/kazehana-evil-anime-gif-14845019",
+        "nameRole": "S"
+      },
+      "80": {
+        "receivingGif": "https://tenor.com/view/sherrybirkin-nishiki-nishio-tokyo-ghoul-gif-9646260",
+        "profileGif": "https://tenor.com/view/sherrybirkin-nishiki-nishio-tokyo-ghoul-gif-9646260",
+        "nameRole": "S~"
+      },
+      "90": {
+        "receivingGif": "https://tenor.com/view/tokyo-ghoul-kaneki-gif-11561067",
+        "profileGif": "https://tenor.com/view/kaneki-talking-tokyo-ghoul-black-and-white-gif-11553246",
+        "nameRole": "SS"
+      },
+      "100": {
+        "receivingGif": "https://tenor.com/view/sherrybirkin-kanekiken-kaneki-tokyo-ghoul-gif-9563195",
+        "profileGif": "https://tenor.com/view/tokyo-ghoul-kaneki-ken-anime-gif-17962590",
+        "nameRole": "SSS"
+      }
+    }
+  },
+  "month_4": {
+    "nameAnime": "Моя Геройская Академия",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_5": {
+    "nameAnime": "Джо Джо",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": "Stand User"
+      },
+      "10": {
+        "receivingGif": "https://tenor.com/view/jojos-bizarre-adventure-jojo-jonathan-joestar-jjba-gif-20867163",
+        "profileGif": "https://tenor.com/view/jonathan-joestar-jjba-phantom-blood-gif-20976226",
+        "nameRole": "Jonathan Jostar"
+      },
+      "20": {
+        "receivingGif": "https://tenor.com/view/joseph-joseph-joestar-anime-wink-gif-17972953",
+        "profileGif": "https://tenor.com/view/joseph-joestar-gif-18910941",
+        "nameRole": "Joseph Jostar"
+      },
+      "30": {
+        "receivingGif": "https://tenor.com/view/jojos-bizarre-adventures-jjba-jotaro-kujo-zoom-in-glare-gif-15954423",
+        "profileGif": "https://tenor.com/view/jojo-jjba-jotaro-jtr-jojo-jotaro-gif-21795935",
+        "nameRole": "Zetaro Kujo"
+      },
+      "40": {
+        "receivingGif": "https://tenor.com/view/dio-brando-anime-gif-7367270",
+        "profileGif": "https://tenor.com/view/jjba-jojos-bizarre-adventure-anime-dio-dio-brando-gif-17858047",
+        "nameRole": "Dio Brando"
+      },
+      "50": {
+        "receivingGif": "https://tenor.com/view/jojos-bizarre-adventures-josuke-higashikata-pose-gif-15178596",
+        "profileGif": "https://tenor.com/view/jjba-jo-jos-bizarre-adventure-eyes-of-heaven-bandai-namco-entertainment-video-game-gif-17428809",
+        "nameRole": "Josuke Higashikata"
+      },
+      "60": {
+        "receivingGif": "https://tenor.com/view/jojo-bizarre-adventure-i-refuse-rohan-kishibe-anime-gif-16755634",
+        "profileGif": "https://tenor.com/view/rohan-kishibe-jojo-gif-18043233",
+        "nameRole": "Rohan Kishibe"
+      },
+      "70": {
+        "receivingGif": "https://tenor.com/view/kira-yoshikage-jojo-jojos-bizarre-adventures-jjba-anime-gif-17083382",
+        "profileGif": "https://tenor.com/view/kira-yoshikage-anime-gif-10238240",
+        "nameRole": "Yoshikage Kira"
+      },
+      "80": {
+        "receivingGif": "https://tenor.com/view/jojo-bucciarati-vento-aureo-punch-gif-14218655",
+        "profileGif": "https://tenor.com/view/bruno-bucciarati-jojos-bizarre-adventures-jjba-talking-anime-gif-16191960",
+        "nameRole": "Bruno Bucciarati"
+      },
+      "90": {
+        "receivingGif": "https://tenor.com/view/diavolo-jjba-golden-wind-king-crimson-doppio-gif-19043434",
+        "profileGif": "https://tenor.com/view/diavolo-doppio-jjba-jojo-jojos-bizarre-adventure-gif-17559188",
+        "nameRole": "Diabolo"
+      },
+      "100": {
+        "receivingGif": "https://tenor.com/view/giorno-jojo-gif-14775673",
+        "profileGif": "https://tenor.com/view/ggeezy-ggiorno-have-a-dream-jojo-gif-13580849",
+        "nameRole": "Giorno Giovanna"
+      }
+    }
+  },
+  "month_6": {
+    "nameAnime": "7 Смертных Грехов",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_7": {
+    "nameAnime": "Блич",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_8": {
+    "nameAnime": "Ван Пис",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": "Pirate"
+      },
+      "10": {
+        "receivingGif": "https://tenor.com/view/biking-one-piece-sea-kuzan-gif-17837996",
+        "profileGif": "https://tenor.com/view/rouge-waves-tears-mourning-beautiful-gif-20050552",
+        "nameRole": "Four Seas"
+      },
+      "20": {
+        "receivingGif": "https://tenor.com/view/one-piece-anime-we-are-strawhat-pirates-shonen-gif-19672825",
+        "profileGif": "https://tenor.com/view/fishman-island-one-piece-deep-sea-sea-serpent-calm-gif-20069354",
+        "nameRole": "Grand Line"
+      },
+      "30": {
+        "receivingGif": "https://tenor.com/view/law-one-piece-stare-anime-sword-gif-17721434",
+        "profileGif": "https://tenor.com/view/one-piece-captain-kid-monkey-d-luffy-supernova-trio-gif-22763357",
+        "nameRole": "Supernovae"
+      },
+      "40": {
+        "receivingGif": "https://tenor.com/view/whitebeard-fight-one-piece-giant-clash-gif-20553866",
+        "profileGif": "https://tenor.com/view/elbaf-gif-22617709",
+        "nameRole": "Warrior of Elbaf"
+      },
+      "50": {
+        "receivingGif": "https://tenor.com/view/one-piece-oars-giant-ancient-giant-thriller-bark-gif-20129622",
+        "profileGif": "https://tenor.com/view/one-piece-oars-giant-ancient-giant-thriller-bark-gif-20129622",
+        "nameRole": "Ancient giants"
+      },
+      "60": {
+        "receivingGif": "https://tenor.com/view/corazon-gif-20690403",
+        "profileGif": "https://tenor.com/view/donquixote-rosinante-gif-21381774",
+        "nameRole": "Monsters of the new world "
+      },
+      "70": {
+        "receivingGif": "https://tenor.com/view/dracule-mihawk-onepiece-power-gif-13967680",
+        "profileGif": "https://tenor.com/view/dracule-mihawk-one-piece-gif-13967682",
+        "nameRole": "Shichibukai"
+      },
+      "80": {
+        "receivingGif": "https://tenor.com/view/one-piece-donquijote-doflamingo-dressrosa-marineford-anime-gif-19752754",
+        "profileGif": "https://tenor.com/view/dollar-dollar-store-store-klukvaffe-doflamingo-gif-22433455",
+        "nameRole": "Underworld King"
+      },
+      "90": {
+        "receivingGif": "https://tenor.com/view/shanks-one-piece-yonko-akagami-no-shanks-red-haired-shanks-gif-20226488",
+        "profileGif": "https://tenor.com/view/shanks-laugh-shanks-laugh-one-piece-saajster-gif-19793182",
+        "nameRole": "Yonko"
+      },
+      "100": {
+        "receivingGif": "https://tenor.com/view/gold-roger-one-piece-pirate-king-pirate-captain-gif-20049128",
+        "profileGif": "https://tenor.com/view/gold-roger-one-piece-speech-my-treasure-treasure-gif-21493628",
+        "nameRole": "The Pirate King"
+      }
+    }
+  },
+  "month_9": {
+    "nameAnime": "Хантер Х Хантер",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_10": {
+    "nameAnime": "Магическая Битва",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_11": {
+    "nameAnime": "Атака Титанов",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  },
+  "month_12": {
+    "nameAnime": "Бездомный Бог",
+    "level": {
+      "0": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "10": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "20": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "30": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "40": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "50": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "60": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "70": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "80": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "90": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      },
+      "100": {
+        "receivingGif": "",
+        "profileGif": "",
+        "nameRole": ""
+      }
+    }
+  }
+}

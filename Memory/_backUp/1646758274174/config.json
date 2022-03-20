@@ -1,0 +1,15 @@
+{
+	"autoStart": true,
+	"autoAdd": true,
+	"autoStartSchems": {},
+	"backUp": {
+		"enable": true,
+		"time": 14400000,
+		"count": 2
+	},
+	"autoSave": {
+		"enable": true,
+		"lastRefresh": 1646758272564,
+		"time": 3600000
+	}
+}
