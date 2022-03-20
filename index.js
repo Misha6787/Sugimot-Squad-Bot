@@ -5,9 +5,8 @@ const DiscordDB = require('simple-discord.db');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
 const bot = new Discord.Client(config.cfg);
-//console.log('Сука токен работай', process.env.BOT_TOKEN)
-bot.login(process.env.BOT_TOKEN);
-//bot.login('OTIzMjA0NTA5ODYwMjU3ODE0.YcMnMw.dG5uJDsDoPFOZIGGRdzmYDJVLMU');
+
+bot.login(config.token);
 
 //process.env.BOT_TOKEN
 
