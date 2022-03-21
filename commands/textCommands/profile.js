@@ -24,8 +24,8 @@ module.exports = async (bot,message,args,argsF) => {
         return;
     }
 
-    let user = message.author
-    let balance = bot.Memory.guilds[message.guildId].members[user.id].money;
+    const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
+    let balance = User.money;
 
     //console.log(message.author.createdAt.toLocaleDateString())
     //console.log(message.member.joinedAt.toLocaleDateString())
@@ -36,13 +36,13 @@ module.exports = async (bot,message,args,argsF) => {
     const exampleEmbed = new MessageEmbed()
         .setTitle('Основная информация: ')
         .setDescription(`
-                    **Имя пользователя:** ${user.username}#${user.discriminator}
+                    **Имя пользователя:** ${User.name}#${message.author.discriminator}
                     **Дата создания аккаунта: ** <t:${Math.floor(new Date(message.author.createdAt).getTime()/1000)}:D>
                     **Дата входа на сервер:** <t:${Math.floor(new Date(message.member.joinedAt).getTime()/1000)}:D>
                     **Sugimoto Coins:** ${balance}
                 `)
         .setThumbnail(`${message.author.avatarURL()}`)
-        .setAuthor(`Сегодня о ${user.username}`, `${message.author.avatarURL()}`)
+        .setAuthor(`Сегодня о ${User.name}`, `${message.author.avatarURL()}`)
         .setColor('#2f3136')
 
     message.channel.send({ embeds:  [ exampleEmbed, exampleEmbedImage ]});

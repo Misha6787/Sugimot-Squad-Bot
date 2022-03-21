@@ -7,11 +7,11 @@ module.exports = bot => {
         })
         .on('messageCreate', (message) => {
             if (message.author.bot) return;
-            require("../commands/backgroundStatistics/textToMoney")(bot, message)
+            require("../commands/backgroundEvents/textToMoney")(bot, message)
         })
         .on('messageCreate', (message) => {
             if (message.author.bot) return;
-            require("../commands/backgroundStatistics/addUsers")(bot, message)
+            require("../commands/backgroundEvents/addInfoToBD")(bot, message)
         })
         .on('voiceStateUpdate', (oldState, newState) => {
             require("../commands/voiceCommands/voiceЕxperience")(oldState, newState, bot)

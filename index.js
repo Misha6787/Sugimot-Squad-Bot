@@ -17,10 +17,9 @@ const bot = new Discord.Client(config.cfg);
 
 bot.login(config.token);
 
-const User = require('./schema/messageSchema')
-//bot.messageSchema = messageSchema
-
-//const MyModel = mongoose.model('User', messageSchema, 'Users')
+const Guild = require('./schema/guild_Schema')
+const User = require('./schema/user_Schema')
+const Monthlvl = require('./schema/monthlvl_Schema')
 
 const dbConnection = mongoose.connection;
 
@@ -31,7 +30,9 @@ dbConnection.once('open', () => {
     console.log('we are connected')
 })
 
+bot.Guild = Guild
 bot.User = User
+bot.Monthlvl = Monthlvl
 
 require("./events/index")(bot);
 

@@ -2,11 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = async (bot,message,args,argsF) => {
     let ifRoles = 0;
-    message.member.roles.cache.forEach(item => {
-        if (item.id === '944259753587126333') {
-            ifRoles++
-        }
-    })
+    message.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
     if (ifRoles === 0) {
         message.channel.send({
             embeds: [
