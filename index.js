@@ -1,15 +1,11 @@
 const Discord = require('discord.js');
 let fs = require('fs');
 let config = require('./config.json');
-const DiscordDB = require('simple-discord.db');
 const mongoose = require('mongoose')
 mongoose.connect(config.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-
-
-
 
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
@@ -19,7 +15,9 @@ bot.login(config.token);
 
 const Guild = require('./schema/guild_Schema')
 const User = require('./schema/user_Schema')
-const Monthlvl = require('./schema/monthlvl_Schema')
+const Month_lvl = require('./schema/monthlvl_Schema')
+
+const AnimeMonth = async () => await Month_lvl.findOne({ month: 1 });
 
 const dbConnection = mongoose.connection;
 
@@ -32,7 +30,9 @@ dbConnection.once('open', () => {
 
 bot.Guild = Guild
 bot.User = User
-bot.Monthlvl = Monthlvl
+bot.AnimeMonth = AnimeMonth()
+
+console.log(bot.AnimeMonth)
 
 require("./events/index")(bot);
 
@@ -47,54 +47,11 @@ for (const file of commandFiles) {
     })
 }
 
-console.log(bot.commands);
+//console.log(bot.commands);
 
-// bot.memory = require('./memory.json');
-//
-// setInterval(()=> {
-//     fs.writeFileSync(`./memory.json`, JSON.stringify(bot.memory, null, '\t'));
-//     console.log('Обновление памяти')
-// }, 1000*30);
-
-bot.Memory = new DiscordDB("Memory", bot);
-
-setInterval(()=> {
-    bot.Memory.save();
-}, 1000*60*30);
-
-// bot.createGuild = (guild = {id: "!", name: "!"}) => {
-//     return {
-//         id: guild.id,
-//         name: guild.name,
-//         muted: [],
-//         prefix: "s!",
-//         members: {},
-//         warns: 0
-//     };
-// };
-// bot.createUser = (user = {id: "!", username: "!"}) => {
-//     return {
-//         id: user.id,
-//         name: user.username,
-//         notes: []
-//     };
-// };
-// bot.createMember = (member = {id: "!", user: {username:"!"}, guild: {id: "!"}}) => {
-//     return {
-//         id: member.id,
-//         name: member.user.username,
-//         guildId: member.guild.id,
-//         money: 0,
-//         warns: []
-//     };
-// };
-// (async function () {
-//     await bot.Memory.create();
-//     bot.Memory.setAutoStart(true);
-//     bot.Memory.setBackUp(1000*60*60*4);
-//     bot.Memory.setAutoSave(1000*60*60);
-//     bot.Memory.setGuilds(bot.createGuild);
-//     bot.Memory.setUsers(bot.createUser);
-//     bot.Memory.setMembers(bot.createMember);
-//     bot.Memory.save();
-// }());
+// setInterval(async ()=> {
+//     const User_for_save = await bot.User.find();
+//     const Guild_for_save = await bot.Guild.find();
+//     User_for_save.save();
+//     Guild_for_save.save();
+// }, 1000*30); //1000*60*30

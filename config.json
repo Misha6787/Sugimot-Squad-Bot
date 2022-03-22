@@ -1,6 +1,7 @@
 {
     "token" : "OTIzMjA0NTA5ODYwMjU3ODE0.YcMnMw.Lva5cTbyLq4xAO94QnP8U9J72XE",
     "mongo_url": "mongodb+srv://admin:MJKhqf6GtiOYs3YVjJvb@cluster0.6tyuh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "anime_month": "1",
     "cfg": {
         "intents": [
             "GUILDS",

@@ -30,6 +30,10 @@ module.exports = async (bot,message,args,argsF) => {
     //console.log(message.author.createdAt.toLocaleDateString())
     //console.log(message.member.joinedAt.toLocaleDateString())
 
+    const battle_pass_level = bot.AnimeMonth.level;
+
+    battle_pass_level.values(User.level_battle_pass)
+
     const exampleEmbedImage = new MessageEmbed()
         .setImage('https://i.imgur.com/m7lznVe.gif')
         .setColor('#2f3136')

@@ -13,10 +13,12 @@ module.exports = async (bot, message) => {
     //     newUser.save()
     // }
 
-    if (content.substr(0, bot.Memory.guilds[guild.id].prefix.length) !== bot.Memory.guilds[guild.id].prefix) return;
+    const Guild = await bot.Guild.findOne({id: message.guildId});
+
+    if (content.substr(0, Guild.prefix.length) !== Guild.prefix) return;
 
     const
-        messageArray = content.slice(bot.Memory.guilds[guild.id].prefix.length).split(' '),
+        messageArray = content.slice(Guild.prefix.length).split(' '),
         command = messageArray[0].toLowerCase(),
         args = messageArray.slice(1),
         messageArrayFull = content.split(' '),
@@ -27,5 +29,4 @@ module.exports = async (bot, message) => {
         //.then(any => console.log(any))
         .catch(err => console.error(err))
 
-    bot.Memory.save();
 }

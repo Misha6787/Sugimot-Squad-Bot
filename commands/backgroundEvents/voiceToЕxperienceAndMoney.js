@@ -1,4 +1,6 @@
+const checkLevel = require("../../helpers/checkLevel");
 let timer;
+
 module.exports = async (oldState, newState, bot) => {
     let ifRoles = 0;
     newState.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
@@ -15,13 +17,16 @@ module.exports = async (oldState, newState, bot) => {
     } else {
         User.inVoiceChannel = true;
         //console.log('open')
-        timer = setInterval(() => {
+        timer = setInterval(async () => {
             User.money += 1;
-            console.log('User Money', User.money)
+            User.experience += 10;
+
+            await checkLevel(bot, newState.id, newState.guild.id)
+
             User.save();
             // console.log('coins +1')
         }, 1000 * 60);
     }
-    console.log('User Money', User.money)
+
     User.save();
 }

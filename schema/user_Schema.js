@@ -6,6 +6,14 @@ const user_Schema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    level_battle_pass: {
+        type: Number,
+        default: 0
+    },
+    experience: {
+        type: Number,
+        default: 0
+    },
     warns: {
         type: Array,
         default: []
