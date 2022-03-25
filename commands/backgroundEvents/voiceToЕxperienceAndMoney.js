@@ -11,9 +11,9 @@ module.exports = async (bot, oldState, newState) => {
         .catch(console.error)
     if (member.bot) return;
 
-    let ifRoles = 0;
-    newState.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
-    if (ifRoles === 0) return;
+    //let ifRoles = 0;
+    //newState.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
+    //if (ifRoles === 0) return;
 
     // ================================= \\
 

@@ -1,5 +1,6 @@
-const getCurrentLevel = require("./getCurrentLevel");
 const { MessageEmbed } = require("discord.js");
+const getCurrentLevel = require("./getCurrentLevel");
+
 const checkLevel = async (bot, userId, guildId) => {
     const User = await bot.User.findOne({id: userId, guildId: guildId});
     let UserExperience = User.experience,

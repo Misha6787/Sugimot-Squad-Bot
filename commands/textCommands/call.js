@@ -5,6 +5,8 @@ module.exports = async (bot,message,args,argsF) => {
             files: ['https://i.imgur.com/r6v4q7f.gif'],
         });
 
+        message.delete()
+
     } else {
         message.channel.send({
             content:  'Упомените человека после команды: `' + `${bot.memory.guilds[message.guildId].prefix}call <участник>` + '`'

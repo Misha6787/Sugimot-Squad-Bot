@@ -3,12 +3,14 @@ const fs = require("fs");
 module.exports = async (bot,message,args,argsF) => {
 
     const commandFiles = fs.readdirSync("./commands/textCommands");
+    const Guild = await bot.Guild.findOne({id: message.guildId})
     let commands = [];
 
+    console.log(Guild)
 
     for (const file of commandFiles) {
         let command = require(`./${file}`);
-        commands += ' `' + bot.Memory.guilds[message.guild.id].prefix + command.names[0] + '` '
+        commands += ' `' + Guild.prefix + command.names[0] + '` '
     }
 
     const embed = new MessageEmbed()

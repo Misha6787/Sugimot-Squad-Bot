@@ -2,13 +2,8 @@
 
 module.exports = async (bot, member) => {
 
-    console.log('fdsfsfdsdsfdsfdf')
-    console.log(member)
-
     //Добовление или проверка в базе этого сервера
-    const Guild = await bot.Guild.findOne({id: member.guildId})
-
-    console.log(member)
+    const Guild = await bot.Guild.findOne({id: member.guild.id})
 
     if (Guild === null) {
         const newGuild = new bot.Guild({
@@ -20,13 +15,13 @@ module.exports = async (bot, member) => {
     }
 
     // Добовление юзера или проверка в базе данных
-    const User = await bot.User.findOne({ id: member.author.id, guildId: member.guildId })
+    const User = await bot.User.findOne({ id: member.id, guildId: member.guild.id })
 
     if (User === null) {
         const newUser = new bot.User ({
             id: member.id,
-            guildId: member.guildId,
-            name: member.username,
+            guildId: member.guild.id,
+            name: member.user.username,
         })
         newUser.save()
     }

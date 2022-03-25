@@ -11,6 +11,13 @@ config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
 const bot = new Discord.Client(config.cfg);
 
+//const { Intents } = require("discord.js")
+//const bot = new Discord.Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS]})
+//other intents may be added. Make sure it has server members intent (Intents.FLAGS.GUILD_MEMBERS)
+
+
+// const bot = new Discord.Client({ ws: { intents: Discord.Intents.ALL } })
+
 bot.login(config.token);
 
 const Guild = require('./schema/guild_Schema')
@@ -47,11 +54,16 @@ for (const file of commandFiles) {
     })
 }
 
-//console.log(bot.commands);
+const battlePassTimer = require('./helpers/battle_pass_timer');
+const deadline = config.dead_line_battle_pass;
 
-// setInterval(async ()=> {
-//     const User_for_save = await bot.User.find();
-//     const Guild_for_save = await bot.Guild.find();
-//     User_for_save.save();
-//     Guild_for_save.save();
-// }, 1000*30); //1000*60*30
+(async function () {
+    await battlePassTimer(bot, deadline)
+})()
+
+
+
+
+
+//const getTimer = async () => await battlePassTimer();
+
