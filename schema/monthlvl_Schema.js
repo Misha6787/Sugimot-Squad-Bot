@@ -3,7 +3,7 @@ const bpmonth = mongoose.Schema({
         month: Number,
         nameAnime: String,
         level: {
-            0:{
+            0: {
                 receivingGif: String,
                 rofileGifString: String,
                 nameRole: String

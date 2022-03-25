@@ -2,13 +2,9 @@ const mongoose = require('mongoose')
 const user_Schema = mongoose.Schema({
     id: String,
     guildId: String,
-    money: {
-        type: Number,
-        default: 0
-    },
-    level_battle_pass: {
-        type: Number,
-        default: 0
+    name: {
+        type: String,
+        default: 'user'
     },
     experience: {
         type: Number,
@@ -18,18 +14,18 @@ const user_Schema = mongoose.Schema({
         type: Array,
         default: []
     },
-    name: {
-        type: String,
-        default: 'user'
-    },
     countSymbol: {
         type: Number,
         default: 0
     },
-    inVoiceChannel: {
-        type: Boolean,
-        default: false
+    money: {
+        type: Number,
+        default: 0
     },
+    level_battle_pass: {
+        type: Number,
+        default: 0
+    }
 },
     { versionKey: false})
 

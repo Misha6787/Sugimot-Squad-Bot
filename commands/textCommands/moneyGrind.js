@@ -1,4 +1,7 @@
 module.exports = async (bot,message,args,argsF) => {
+
+    // Проверки роли, и проверка на бота и т.д \\
+
     //const user = message.mentions.users.first();
     let ifRoles = 0;
     message.member.roles.cache.forEach(item => {
@@ -22,6 +25,7 @@ module.exports = async (bot,message,args,argsF) => {
         return;
     }
 
+    // ======================================= \\
 
     const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
 

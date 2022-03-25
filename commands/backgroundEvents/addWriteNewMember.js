@@ -5,12 +5,12 @@ module.exports = async (bot, message, args, argsF) => {
     const Guild = await bot.Guild.findOne({id: message.guildId})
 
     if (Guild === null) {
-        const newisGuild = new bot.Guild({
+        const newGuild = new bot.Guild({
             id: message.guildId,
             name: message.guild.name,
             prefix: '?',
         })
-        newisGuild.save()
+        newGuild.save()
     }
 
     // Добовление юзера или проверка в базе данных

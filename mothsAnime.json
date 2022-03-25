@@ -4,58 +4,58 @@
     "nameAnime": "Клинок, рассекающий демонов",
     "level": {
       "0": {
-        "receivingGif": "",
-        "profileGif": "",
+        "receivingGif": "https://i.imgur.com/WJsaWxF.gif",
+        "profileGif": "https://i.imgur.com/WJsaWxF.gif",
         "nameRole": "Hashira"
       },
       "10": {
-        "receivingGif": "https://tenor.com/view/demon-slayer-anime-anime-girl-gif-22274247",
-        "profileGif": "https://tenor.com/view/shinobu-kocho-demon-slayer-hashira-gif-22643648",
+        "receivingGif": "https://i.imgur.com/3JtQj8x.gif",
+        "profileGif": "https://i.imgur.com/FhXCSV9.gif",
         "nameRole": "Konchuu no Hashira"
       },
       "20": {
-        "receivingGif": "https://tenor.com/view/kimetsu-no-yaiba-gif-22003444",
-        "profileGif": "https://tenor.com/view/obanai-demon-slayer-gif-20404473",
+        "receivingGif": "https://i.imgur.com/em9AvD7.gif",
+        "profileGif": "https://i.imgur.com/gSu1xNU.gif",
         "nameRole": "Hebi no Hashira"
       },
       "30": {
-        "receivingGif": "https://tenor.com/view/demon-slayer-tengen-uzui-entertainment-district-arc-kimetsu-no-yaiba-gif-24028296",
-        "profileGif": "https://tenor.com/view/tengen-uzui-tengen-kimetsu-no-yaiba-demon-slayer-gif-24622144",
+        "receivingGif": "https://i.imgur.com/I39WvxO.gif",
+        "profileGif": "https://i.imgur.com/g3M4uUP.gif",
         "nameRole": "Ne no Hashira"
       },
       "40": {
-        "receivingGif": "https://tenor.com/view/mitsuri-kanroji-anime-in-love-blushing-kimetsu-no-yaiba-gif-15742146",
-        "profileGif": "https://tenor.com/view/demon-slayer-kimetsu-no-yaiba-manga-series-love-hashira-gif-17176816",
+        "receivingGif": "https://i.imgur.com/Q6eGSBJ.gif",
+        "profileGif": "https://i.imgur.com/fnsmjTo.gif",
         "nameRole": "A no hashira"
       },
       "50": {
-        "receivingGif": "https://tenor.com/view/giyuu-tomioka-demon-slayer-anime-sword-gif-17098044",
-        "profileGif": "https://tenor.com/view/kimetsu-no-yaiba-demon-slayer-kny-anime-giyuu-tomioka-gif-17703662",
+        "receivingGif": "https://i.imgur.com/pTOwnHH.gif",
+        "profileGif": "https://i.imgur.com/fVLO7gl.gif",
         "nameRole": "Mizuno Hashira"
       },
       "60": {
-        "receivingGif": "https://tenor.com/view/rengoku-kyojuro-demon-slayer-anime-gif-23525456",
-        "profileGif": "https://tenor.com/view/demon-slayer-rengoku-gif-23414714",
+        "receivingGif": "https://i.imgur.com/EYjpZno.gif",
+        "profileGif": "https://i.imgur.com/SKfabFZ.gif",
         "nameRole": "En no Hashira"
       },
       "70": {
-        "receivingGif": "https://tenor.com/view/demon-slayer-gif-21432840",
-        "profileGif": "https://tenor.com/view/muichiro-takito-demon-slayer-kny-anime-gif-19362364",
+        "receivingGif": "https://i.imgur.com/3n81FrL.gif",
+        "profileGif": "https://i.imgur.com/zQcq0CL.gif",
         "nameRole": "Kiri no Hashira"
       },
       "80": {
-        "receivingGif": "https://tenor.com/view/sanemi-shinazugawa-sanemi-shinazugawa-wind-hashira-demon-slayer-gif-21418570",
-        "profileGif": "https://tenor.com/view/kimetsu-no-yaiba-demon-slayer-demon-slayer-corps-the-wind-hashira-sanemi-shinazugawa-gif-17177106",
+        "receivingGif": "https://i.imgur.com/YooJw5A.gif",
+        "profileGif": "https://i.imgur.com/i2QZhtE.gif",
         "nameRole": "Fu no Hashira"
       },
       "90": {
-        "receivingGif": "https://tenor.com/view/himejima-himejima-gyomei-kimetsu-no-yaiba-demon-slayer-gyomei-gif-24930089",
-        "profileGif": "https://tenor.com/view/dubs-demon-slayer-hashira-anime-gif-18029886",
+        "receivingGif": "https://i.imgur.com/HYW4XGI.gif",
+        "profileGif": "https://i.imgur.com/amNfhNU.gif",
         "nameRole": "Ishi no Hashira"
       },
       "100": {
-        "receivingGif": "https://tenor.com/view/yoriichi-gif-21991850",
-        "profileGif": "https://tenor.com/view/demon-slayer-yoriichi-demon-slayer-gif-24462724",
+        "receivingGif": "https://i.imgur.com/yCiQ23W.gif",
+        "profileGif": "https://i.imgur.com/fS1fQSq.gif",
         "nameRole": "Taiyou no Hashira"
       }
     }

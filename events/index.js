@@ -1,6 +1,9 @@
 module.exports = bot => {
     bot
         .on('ready', () => require("./ready")(bot))
+        .on('guildMemberAdd', async (newMember) => {
+            await require("../commands/backgroundEvents/addWentNewMember")(bot, newMember)
+        })
         .on('messageCreate', (message) => {
             if (message.author.bot) return;
             require("./messageCreate")(bot, message)
@@ -11,9 +14,9 @@ module.exports = bot => {
         })
         .on('messageCreate', (message) => {
             if (message.author.bot) return;
-            require("../commands/backgroundEvents/addInfoToBD")(bot, message)
+            require("../commands/backgroundEvents/addWriteNewMember")(bot, message)
         })
         .on('voiceStateUpdate', (oldState, newState) => {
-            require("../commands/backgroundEvents/voiceToЕxperienceAndMoney")(oldState, newState, bot)
+            require("../commands/backgroundEvents/voiceToЕxperienceAndMoney")(bot, oldState, newState)
         })
 }

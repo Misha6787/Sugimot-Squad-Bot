@@ -1,6 +1,9 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = async (bot,message,args,argsF) => {
+
+    // Проверки роли, и проверка на бота и т.д \\
+
     let ifRoles = 0;
     message.member.roles.cache.forEach(item => {
         if (item.id === '777322473523249182' ||
@@ -32,6 +35,9 @@ module.exports = async (bot,message,args,argsF) => {
         })
         return;
     }
+
+    // ======================================= \\
+
     let userId = args[0].replace(/[^+\d]/g, '');
     let BattlePassRoleId = '944259753587126333';
     try {
