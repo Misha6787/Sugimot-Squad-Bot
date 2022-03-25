@@ -16,25 +16,18 @@ const getCurrentLevel = async (bot, userId, guildId) => {
 
     keys.sort(function(a, b){return a - b})
 
+
     currentIndex = keys.indexOf(levelUser) - 1 >= 0 ? keys.indexOf(levelUser) - 1 : 0 ;
-    currentLevel = keys[keys.indexOf(levelUser) - 1] >= 0 ? keys[keys.indexOf(levelUser) - 1] : 0 ;
+    currentLevel = keys[keys.indexOf(levelUser) - 1] >= 0 ? keys[keys.indexOf(levelUser) - 1] : keys[0] ;
 
     thisLevelElement = battle_pass_anime.level[keys[currentIndex]]
-
-    // let testLevelElement;
-    //
-    // for (let key in battle_pass_anime.level) {
-    //     if (+key === currentLevel) {
-    //         testLevelElement = battle_pass_anime.level[key];
-    //     }
-    // }
-
 
     // console.log('keys ', keys)
     // console.log('keys.indexOf(levelUser) ', keys.indexOf(levelUser))
     // console.log('keys[keys.indexOf(levelUser) - 1] ', keys[keys.indexOf(levelUser) - 1])
-
-    //console.log(testLevelElement)
+    //
+    // console.log('battle_pass_anime.level[0].profileGif ', battle_pass_anime.level['0'].profileGif)
+    // console.log(Object.keys(thisLevelElement))
 
     return {
         level: currentLevel,

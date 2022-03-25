@@ -40,23 +40,9 @@ module.exports = async (bot,message,args,argsF) => {
 
     let balance = User.money;
 
-    //console.log(message.author.createdAt.toLocaleDateString())
-    //console.log(message.member.joinedAt.toLocaleDateString())
-
-    //const battle_pass_level = bot.AnimeMonth.level;
-
-    //battle_pass_level.values(User.level_battle_pass)
-
-    const currentLevel = (await getCurrentLevel(bot, User.id, User.guildId)).level
     const elementLevel = (await getCurrentLevel(bot, User.id, User.guildId)).element
 
     let gif = elementLevel.profileGif ? elementLevel.profileGif : 'https://i.imgur.com/eHX2Nbc.png';
-
-    gif = currentLevel === 0 ? elementLevel.receivingGif ? elementLevel.receivingGif : 'https://i.imgur.com/eHX2Nbc.png' : gif
-
-    // console.log(elementLevel.profileGif)
-    // console.log(elementLevel.receivingGif)
-    // console.log(Object.keys(elementLevel))
 
     const if_Battle_pass = battle_pass ? `
                         **Уровень боевого пропуска:** ${User.level_battle_pass}

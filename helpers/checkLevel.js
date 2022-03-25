@@ -13,12 +13,9 @@ const checkLevel = async (bot, userId, guildId) => {
 
         //let user = message.guild.members.cache.get(userId);
 
-        const currentLevel = (await getCurrentLevel(bot, userId, guildId)).level
         const elementLevel = (await getCurrentLevel(bot, userId, guildId)).element
 
         let gif = elementLevel.receivingGif ? elementLevel.receivingGif : 'https://i.imgur.com/eHX2Nbc.png';
-
-        gif = currentLevel === 0 ? elementLevel.receivingGif ? elementLevel.receivingGif : 'https://i.imgur.com/eHX2Nbc.png' : gif
 
         let member = await bot.users.fetch(userId)
             .then(user => user)
