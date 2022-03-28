@@ -25,7 +25,12 @@ const user_Schema = mongoose.Schema({
     level_battle_pass: {
         type: Number,
         default: 0
+    },
+    voiceInterval: {
+        type: Number,
+        default: 0
     }
+
 },
     { versionKey: false})
 

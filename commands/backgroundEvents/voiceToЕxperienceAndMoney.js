@@ -1,5 +1,6 @@
 const checkLevel = require("../../helpers/checkLevel");
 //const testBGfunc = require('../../helpers/testBGfunc')
+
 let timer;
 
 module.exports = async (bot, oldState, newState) => {
@@ -21,19 +22,25 @@ module.exports = async (bot, oldState, newState) => {
 
     if (User === null) return;
 
+
+    //console.log(newState.channel)
+
     if (!oldState.channel && newState.channel) {
-        timer = setInterval(async () => {
+
+        //console.log(User.name, ' open')
+        User.voiceInterval = setInterval(async () => {
             User.money += 1;
             User.experience += 10;
-
+            //console.log(User.name, ' +1')
             await checkLevel(bot, newState.id, newState.guild.id)
 
             User.save();
             // console.log('coins +1')
-        }, 1000 * 60);
+        }, 1000);
 
     } else if (!newState.channel) {
-        clearInterval(timer)
+        //console.log(User.name, ' exit')
+        await clearInterval(User.voiceInterval)
     }
     //await testBGfunc(bot, newState)
     User.save();
