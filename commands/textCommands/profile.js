@@ -40,7 +40,7 @@ module.exports = async (bot,message,args,argsF) => {
 
     let balance = User.money;
 
-    const elementLevel = (await getCurrentLevel(bot, User.id, User.guildId)).element
+    const elementLevel = (await getCurrentLevel(bot, User.level_battle_pass)).element
 
     let gif = elementLevel.profileGif ? elementLevel.profileGif : 'https://i.imgur.com/eHX2Nbc.png';
 

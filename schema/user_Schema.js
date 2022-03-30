@@ -29,6 +29,15 @@ const user_Schema = mongoose.Schema({
     voiceInterval: {
         type: Number,
         default: 0
+    },
+    permissions: {
+        type: Object,
+        default: {
+            mute_members: false,
+            move_members: false,
+            private_role: false,
+            create_private_room: false
+        }
     }
 
 },

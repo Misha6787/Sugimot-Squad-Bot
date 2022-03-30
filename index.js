@@ -45,6 +45,7 @@ require("./events/index")(bot);
 
 bot.commands = new Discord.Collection();
 
+// Добовление обычных команд
 const commandFiles = fs.readdirSync("./commands/textCommands");
 
 for (const file of commandFiles) {
@@ -54,6 +55,17 @@ for (const file of commandFiles) {
     })
 }
 
+// Добовление команд текстовых картинок
+const textImageCommandFiles = fs.readdirSync("./commands/textImageCommands");
+
+for (const file of textImageCommandFiles) {
+    let command = require(`./commands/textImageCommands/${file}`);
+    command.names.forEach(el => {
+        bot.commands.set(el, command);
+    })
+}
+
+// Добовление таймера окончания баттл паса
 const battlePassTimer = require('./helpers/battle_pass_timer');
 const deadline = config.dead_line_battle_pass;
 

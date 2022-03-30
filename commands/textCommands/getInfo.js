@@ -1,3 +1,4 @@
+const {MessageEmbed} = require("discord.js");
 
 module.exports = async (bot,message,args,argsF) => {
 
@@ -5,8 +6,13 @@ module.exports = async (bot,message,args,argsF) => {
     const levelUser = User.level_battle_pass;
     const battle_pass_anime = await bot.AnimeMonth;
 
-    console.log(message.channel)
-    console.log(bot)
+
+    // const embed = new MessageEmbed()
+    //     .setTitle('Неправильный или несуществующий цвет')
+    //     .setDescription('Напишите правильное название нужного вам цвета \n можете выбрать из предложенных базовых цветов')
+    //     .setColor('#ff0000')
+    //
+    // message.channel.send({ embeds: [ embed ] });
 }
 
 module.exports.names = ['инфа'];

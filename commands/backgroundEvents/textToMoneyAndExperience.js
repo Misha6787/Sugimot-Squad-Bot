@@ -1,16 +1,11 @@
 const checkLevel = require('../../helpers/checkLevel')
-//const testBGfunc = require('../../helpers/testBGfunc')
+const {MessageEmbed} = require("discord.js");
 
 module.exports = async (bot,message,args,argsF) => {
 
     // Проверки роли, и проверка на бота и т.д \\
 
     if (message.author.bot) return;
-
-    //let ifRoles = 0;
-    //message.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
-    //if (ifRoles === 0) return;
-
     if (message.content.substr(0, 4) === 'http') return
 
     // ================================= \\
@@ -21,15 +16,36 @@ module.exports = async (bot,message,args,argsF) => {
 
     let symbols = message.content.replace(/\s+/g, '').length + User.countSymbol
 
+    //await getCurrentLevel(bot, message.author.id, message.guildId)
+
     if (symbols >= 500) {
         symbols -= 500
         User.money += 10
         User.experience += 100;
 
-        await checkLevel(bot, message.author.id, message.guildId)
-    }
+        await checkLevel(bot, message.author.id, message.guildId, User.experience)
 
-    //await testBGfunc(bot, message, message.author.id, message.guildId)
+        // let channelLog = await bot.channels.fetch('958814476335980644')
+        //     .then(channel => channel)
+        //     .catch(console.error)
+        //
+        // let GuildMember = message.guild.members.cache.get(User.id).user
+        //
+        // const exampleEmbed = new MessageEmbed()
+        //     .setTitle(`Текстовые каналы`)
+        //     .setDescription(`
+        //                     Участник <@${User.id}> получил койны
+        //
+        //                     Уровень БП: **${User.level_battle_pass}**
+        //                     Опыт: **${User.experience - 100} > ${User.experience}**
+        //                     Деньги: **${User.money - 10} > ${User.money}**
+        //                 `)
+        //     .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
+        //     .setTimestamp()
+        //     .setColor('#C561D3')
+        //
+        // channelLog.send({ embeds:  [ exampleEmbed ]});
+    }
 
     User.countSymbol = symbols
     User.save();
