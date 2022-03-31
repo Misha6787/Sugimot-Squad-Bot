@@ -6,7 +6,6 @@ mongoose.connect(config.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
 const bot = new Discord.Client(config.cfg);
@@ -23,8 +22,9 @@ bot.login(config.token);
 const Guild = require('./schema/guild_Schema')
 const User = require('./schema/user_Schema')
 const Month_lvl = require('./schema/monthlvl_Schema')
+const Permissions_battle_pass = require('./schema/permissions_battle_pass_Schema')
 
-const AnimeMonth = async () => await Month_lvl.findOne({ month: 1 });
+const AnimeMonth = async () => await Month_lvl.findOne({ month: config.anime_month });
 
 const dbConnection = mongoose.connection;
 
@@ -38,6 +38,7 @@ dbConnection.once('open', () => {
 bot.Guild = Guild
 bot.User = User
 bot.AnimeMonth = AnimeMonth()
+bot.Permissions_battle_pass = Permissions_battle_pass
 
 console.log(bot.AnimeMonth)
 

@@ -39,30 +39,28 @@ module.exports = async (bot, oldState, newState) => {
         channelLog.send({ embeds:  [ exampleEmbed ]});
 
         User.voiceInterval = setInterval(async () => {
-            User.money += 10;
-            User.experience += 100;
+            User.money += 1;
+            User.experience += 10;
+
+            User.save();
+
             await checkLevel(bot, newState.id, newState.guild.id, User.experience)
 
-            // const exampleEmbed = new MessageEmbed()
-            //     .setTitle(`Голосовые каналы`)
-            //     .setDescription(`
-            //                 Участник <@${User.id}> получил койны
-            //
-            //                 Уровень БП: **${User.level_battle_pass}**
-            //                 Опыт: **${User.experience - 100} > ${User.experience}**
-            //                 Деньги: **${User.money - 10} > ${User.money}**
-            //             `)
-            //     .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
-            //     .setTimestamp()
-            //     .setColor('#C561D3')
-            //
-            // channelLog.send({ embeds:  [ exampleEmbed ]});
-            //
-            // User.save();
+            const exampleEmbed = new MessageEmbed()
+                .setTitle(`Голосовые каналы`)
+                .setDescription(`
+                            Участник <@${User.id}> получил койны
 
-            //
-            // console.log('coins +1')
-        }, 1000 * 60 * 10);
+                            Уровень БП: **${User.level_battle_pass}**
+                            Опыт: **${User.experience} > ${User.experience}**
+                            Деньги: **${User.money} > ${User.money}**
+                        `)
+                .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
+                .setTimestamp()
+                .setColor('#C561D3')
+
+            channelLog.send({ embeds:  [ exampleEmbed ]});
+        }, 1000 * 60);
 
     } else if (!newState.channel) {
         const exampleEmbed = new MessageEmbed()

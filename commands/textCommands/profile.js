@@ -73,3 +73,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['профиль', 'profile'];
+module.exports.type = 'for_all';

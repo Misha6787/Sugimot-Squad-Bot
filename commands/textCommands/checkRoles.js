@@ -21,3 +21,4 @@ module.exports = async (bot, message, args, argsF) => {
 }
 
 module.exports.names = ['мойроли', 'моироли', 'checkroles'];
+module.exports.type = 'moderation';

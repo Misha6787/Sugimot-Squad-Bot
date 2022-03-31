@@ -13,6 +13,9 @@ module.exports = bot => {
             if (message.author.bot) return;
             require("../commands/backgroundEvents/addWriteNewMember")(bot, message)
         })
+        .on('interactionCreate', async (interaction) => {
+            await require("../commands/interactionCommands/selectedMenu")(bot, interaction)
+        })
         .on('guildMemberAdd', async (newMember) => {
             await require("../commands/backgroundEvents/addWentNewMember")(bot, newMember)
         })

@@ -31,12 +31,43 @@ const user_Schema = mongoose.Schema({
         default: 0
     },
     permissions: {
-        type: Object,
-        default: {
-            mute_members: false,
-            move_members: false,
-            private_role: false,
-            create_private_room: false
+        mute_members: {
+            status: {
+                type: Boolean,
+                default: false
+            },
+            cost: {
+                type: Number,
+                default: 0
+            }
+        },
+        move_members: {
+            status: {
+                type: Boolean,
+                default: false
+            },
+            cost: {
+                type: Number,
+                default: 0
+            }
+        },
+        private_role: {
+            status: {
+                type: Boolean,
+                default: false
+            },
+            used_command: {
+                type: Boolean,
+                default: false
+            }
+        },
+        create_private_room: {
+            type: Boolean,
+            default: false
+        },
+        upgrade_private_role: {
+            type: Boolean,
+            default: false
         }
     }
 
@@ -45,4 +76,4 @@ const user_Schema = mongoose.Schema({
 
 //const User = mongoose.model('User', user_Schema, 'User')
 
-module.exports = mongoose.model('Users', user_Schema)
+module.exports = mongoose.model('Users', user_Schema, 'Users')

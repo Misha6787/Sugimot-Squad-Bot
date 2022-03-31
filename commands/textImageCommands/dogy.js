@@ -23,3 +23,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['доги'];
+module.exports.type = 'text_image';

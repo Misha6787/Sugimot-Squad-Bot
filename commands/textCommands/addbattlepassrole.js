@@ -89,3 +89,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['выдатьбп', 'addbattlepassrole'];
+module.exports.type = 'moderation';

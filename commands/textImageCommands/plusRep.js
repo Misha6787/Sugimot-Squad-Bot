@@ -16,4 +16,5 @@ module.exports = async (bot,message,args,argsF) => {
     message.channel.send({ embeds:  [ exampleEmbed ]});
 }
 
-module.exports.names = ['репорт'];
+module.exports.names = ['+реп'];
+module.exports.type = 'text_image';

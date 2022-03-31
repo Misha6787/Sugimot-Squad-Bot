@@ -23,30 +23,36 @@ module.exports = async (bot,message,args,argsF) => {
         User.money += 10
         User.experience += 100;
 
+        User.countSymbol = symbols;
+
+        User.save();
+
         await checkLevel(bot, message.author.id, message.guildId, User.experience)
 
-        // let channelLog = await bot.channels.fetch('958814476335980644')
-        //     .then(channel => channel)
-        //     .catch(console.error)
-        //
-        // let GuildMember = message.guild.members.cache.get(User.id).user
-        //
-        // const exampleEmbed = new MessageEmbed()
-        //     .setTitle(`Текстовые каналы`)
-        //     .setDescription(`
-        //                     Участник <@${User.id}> получил койны
-        //
-        //                     Уровень БП: **${User.level_battle_pass}**
-        //                     Опыт: **${User.experience - 100} > ${User.experience}**
-        //                     Деньги: **${User.money - 10} > ${User.money}**
-        //                 `)
-        //     .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
-        //     .setTimestamp()
-        //     .setColor('#C561D3')
-        //
-        // channelLog.send({ embeds:  [ exampleEmbed ]});
+        let channelLog = await bot.channels.fetch('958814476335980644')
+            .then(channel => channel)
+            .catch(console.error)
+
+        let GuildMember = message.guild.members.cache.get(User.id).user
+
+        const exampleEmbed = new MessageEmbed()
+            .setTitle(`Текстовые каналы`)
+            .setDescription(`
+                            Участник <@${User.id}> получил койны
+
+                            Уровень БП: **${User.level_battle_pass}**
+                            Опыт: **${User.experience - 100} > ${User.experience}**
+                            Деньги: **${User.money - 10} > ${User.money}**
+                        `)
+            .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
+            .setTimestamp()
+            .setColor('#C561D3')
+
+        channelLog.send({ embeds:  [ exampleEmbed ]});
+    } else {
+        User.countSymbol = symbols;
+        User.save();
     }
 
-    User.countSymbol = symbols
-    User.save();
+
 }

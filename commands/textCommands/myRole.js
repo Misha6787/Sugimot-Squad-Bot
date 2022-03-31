@@ -141,3 +141,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['личнаяроль', 'myrole'];
+module.exports.type = 'for_all';

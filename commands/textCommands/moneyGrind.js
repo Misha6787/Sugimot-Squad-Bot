@@ -52,6 +52,7 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['получитькойны', 'получитькоины', 'moneygrind'];
+module.exports.type = 'moderation';
 
 // текстовые каналы 500 символов = 10 монет
 // гс чат 1 час = 50 монет

@@ -8,7 +8,6 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
     let limitsExperience = 1000 + 100 * UserLevel;
 
     if (UserExperience >= limitsExperience) {
-        console.log('ffff');
         UserExperience -= limitsExperience;
         User.level_battle_pass++;
         User.experience = UserExperience;

@@ -48,3 +48,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['очиститьбазу', 'судныйдень', 'clearbd'];
+module.exports.type = 'moderation';

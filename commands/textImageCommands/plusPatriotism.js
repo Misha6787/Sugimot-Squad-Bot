@@ -55,3 +55,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['патриотизм'];
+module.exports.type = 'moderation';

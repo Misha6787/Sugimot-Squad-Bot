@@ -16,3 +16,4 @@ module.exports = async (bot,message,args,argsF) => {
 }
 
 module.exports.names = ['инфа'];
+module.exports.type = 'moderation';
