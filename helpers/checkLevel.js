@@ -15,14 +15,47 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
         User.save();
 
         if (User.level_battle_pass % 10 === 0) {
+            const battlePassLevel = await getCurrentLevel(bot, User.level_battle_pass);
 
-            const elementLevel = (await getCurrentLevel(bot, User.level_battle_pass)).element;
+            const elementLevel = battlePassLevel.element;
+
+            const previousLevel = User.level_battle_pass > 0 ? User.level_battle_pass - (User.level_battle_pass % 10) - 1 : User.level_battle_pass;
+
+            const previousBattlePassLevel = await getCurrentLevel(bot, previousLevel);
+
+            const elementrole = battlePassLevel.element.nameRole;
+
+            const previousElementrole = previousBattlePassLevel.element.nameRole;
+
+            let nextLevelRole,
+                previousLevelRole;
 
             let gif = elementLevel.receivingGif ? elementLevel.receivingGif : 'https://i.imgur.com/eHX2Nbc.png';
 
-            let member = await bot.users.fetch(userId)
-                .then(user => user)
-                .catch(console.error)
+            const thisGuild = await bot.guilds.fetch(guildId);
+            const member = await thisGuild.members.fetch(User.id)
+
+            // let member = await bot.users.fetch(userId)
+            //     .then(user => user)
+            //     .catch(console.error)
+
+            member.guild.roles.cache.forEach(item => {
+                if (battlePassLevel.level === 0) {
+                    if (item.name === `${battlePassLevel.level} | ${elementrole}`) {
+                        nextLevelRole = item;
+                        previousLevelRole = item;
+                    }
+                } else {
+                    if (item.name === `${battlePassLevel.level} | ${elementrole}`) {
+                        nextLevelRole = item;
+                    } else if (item.name === `${previousBattlePassLevel.level} | ${previousElementrole}`) {
+                        previousLevelRole = item;
+                    }
+                }
+            })
+
+            await member.roles.remove(previousLevelRole.id);
+            await member.roles.add(nextLevelRole.id);
 
             // let channelFlood = await bot.channels.fetch('777512811466981376')
             //     .then(channel => channel)
@@ -36,12 +69,12 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
                 .setDescription(`
                     Поздравляем! Теперь твой уровень - **${User.level_battle_pass}**
                 `)
-                .setThumbnail(`https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}`)
-                .setAuthor(`Сегодня о ${User.name}`, `https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}`)
+                .setThumbnail(`https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}`)
+                .setAuthor(`Сегодня о ${member.nickname}`, `https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}`)
                 .setImage(`${gif}`)
                 .setColor('RANDOM')
 
-            member.send({ embeds:  [ exampleEmbed ]});
+            await member.send({ embeds:  [ exampleEmbed ]});
             //channelFlood.send({ embeds:  [ exampleEmbed ]});
             channelLog.send({ embeds:  [ exampleEmbed ]});
         }

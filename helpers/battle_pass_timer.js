@@ -1,8 +1,8 @@
 const battlePassTimer = async (bot, deadline) => {
 
-    let server = await bot.guilds.fetch('777301995803377704');
+    let guild = await bot.guilds.fetch('777301995803377704');
 
-    let channel = await server.channels.fetch('956999770910634065');
+    let channel = await guild.channels.fetch('956999770910634065');
 
     let message = await channel.messages.fetch('956999918449475624');
 
@@ -50,7 +50,7 @@ const battlePassTimer = async (bot, deadline) => {
         return getTime;
     }
 
-    // обновление времени
+    // обновление времени таймера БП
     const updateClock = setInterval(async () => {
         let getTime = await updateMessage();
 
@@ -60,6 +60,22 @@ const battlePassTimer = async (bot, deadline) => {
     }, 1000*60);
 
     await updateMessage()
+
+    // время привелегий
+    setInterval(async () => {
+        const User = await bot.User.find({guildId: message.guildId});
+        User.forEach(item => {
+            if (new Date(item.permissions.mute_members.date) === new Date()) {
+                const member = guild.members.cache.get(User.id)
+                item.permissions.mute_members.status = false;
+                member.roles.remove('960895927109943306');
+            } else if (new Date(item.permissions.move_members.date) === new Date()) {
+                const member = guild.members.cache.get(User.id)
+                item.permissions.move_members.status = false;
+                member.roles.remove('960895931065200720');
+            }
+        })
+    }, 1000*60);
 }
 
 module.exports = battlePassTimer

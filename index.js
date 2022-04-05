@@ -6,6 +6,9 @@ mongoose.connect(config.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+
+const path = require('path');
+
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 
 const bot = new Discord.Client(config.cfg);
@@ -30,17 +33,18 @@ const dbConnection = mongoose.connection;
 
 dbConnection.on('error', err => {
     console.log('error', err)
-})
+});
 dbConnection.once('open', () => {
     console.log('we are connected')
-})
+});
 
-bot.Guild = Guild
-bot.User = User
-bot.AnimeMonth = AnimeMonth()
-bot.Permissions_battle_pass = Permissions_battle_pass
+bot.Guild = Guild;
+bot.User = User;
+bot.AnimeMonth = AnimeMonth();
+bot.Permissions_battle_pass = Permissions_battle_pass;
+//console.log(path.resolve(__dirname, 'commands/backgroundEvents/voiceToЕxperienceAndMoney'))
 
-console.log(bot.AnimeMonth)
+//console.log(bot.AnimeMonth)
 
 require("./events/index")(bot);
 
@@ -53,7 +57,7 @@ for (const file of commandFiles) {
     let command = require(`./commands/textCommands/${file}`);
     command.names.forEach(el => {
         bot.commands.set(el, command);
-    })
+    });
 }
 
 // Добовление команд текстовых картинок

@@ -4,8 +4,7 @@ const permissions = mongoose.Schema({
         options: {
             label: String,
             description: String,
-            price: Number,
-            count: Number
+            price: Number
         }
     },
     { versionKey: false})

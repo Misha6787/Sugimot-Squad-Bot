@@ -52,8 +52,8 @@ module.exports = async (bot, oldState, newState) => {
                             Участник <@${User.id}> получил койны
 
                             Уровень БП: **${User.level_battle_pass}**
-                            Опыт: **${User.experience} > ${User.experience}**
-                            Деньги: **${User.money} > ${User.money}**
+                            Опыт: **${User.experience}**
+                            Деньги: **${User.money}**
                         `)
                 .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
                 .setTimestamp()

@@ -34,12 +34,20 @@ module.exports = async (bot, interaction) => {
     let permissionBuy = false;
 
     switch (interaction.values[0]) {
-        case 'move_members':
         case 'mute_members':
             if (User.money >= Permissions_bp.options.price) {
                 User.money -= Permissions_bp.options.price;
                 User.permissions[interaction.values[0]].status = true;
-                User.permissions[interaction.values[0]].cost += Permissions_bp.options.count;
+                interaction.member.roles.add('960895927109943306');
+            } else {
+                isNotMoney = true;
+            }
+            break
+        case 'move_members':
+            if (User.money >= Permissions_bp.options.price) {
+                User.money -= Permissions_bp.options.price;
+                User.permissions[interaction.values[0]].status = true;
+                interaction.member.roles.add('960895931065200720');
             } else {
                 isNotMoney = true;
             }

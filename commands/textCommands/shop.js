@@ -17,33 +17,23 @@ module.exports = async (bot,message,args,argsF) => {
     //         default: false
     //     }
     // }
-    const option_1 = {
-        label: 'Мут участников',
-        description: 'Вы получите 5 минут сумарного времени мута любого участника не относящегося к администраций сервера',
-        value: 'mute_members'
-    }
-    const option_2 = {
-        label: 'Перемещение участников',
-        description: 'Вы получите заряды перемещений любого участника не относящегося к администраций сервера',
-        value: 'move_members'
-    }
-    const option_3 = {
-        label: 'Личная роль',
-        description: 'Доступ к ?личнаяроль "Название" "Цвет"',
-        value: 'private_role'
-    }
-    const option_4 = {
-        label: 'Создание личной комнаты',
-        description: 'Вы получите доступ к созданию личных комнат до конца боевого пропуска',
-        value: 'create_private_room'
-    }
-    const option_5 = {
-        label: 'Улучшение личной роли',
-        description: 'Ваша роль станет выше всех и будет отображаться в списке участников',
-        value: 'upgrade_private_role'
-    }
 
-    let options = [option_1, option_2, option_3, option_4, option_5];
+    const PermissionsBattlePass = await bot.Permissions_battle_pass.find();
+
+    let options = [];
+    let fieldsItems = []
+
+    PermissionsBattlePass.forEach(item => {
+        options.push({
+            label: item.options.label,
+            description: item.options.description,
+            value: item.name
+        })
+        fieldsItems.push({
+            name: `「 ${item.options.label} 」`,
+            value: item.options.description,
+        })
+    })
 
     const selectMenu = new MessageSelectMenu()
         .setCustomId('select')
@@ -57,28 +47,7 @@ module.exports = async (bot,message,args,argsF) => {
             {
                 title: 'Добро пожаловать в Магазинчик Sugimoto!',
                 description: 'Выберите выберите интересующую вас привелегию в выпадаюзем списке',
-                fields: [
-                    {
-                        name: '「 Мут участников 」',
-                        value: 'Вы получите 5 минут сумарного времени мута любого участника не относящегося к администраций сервера',
-                    },
-                    {
-                        name: '「 Перемещение участников 」',
-                        value: 'Вы получите 10 перемещений любого участника не относящегося к администраций сервера',
-                    },
-                    {
-                        name: '「 Личная роль 」',
-                        value: 'Доступ к ?личнаяроль "Название" "Цвет"',
-                    },
-                    {
-                        name: '「 Создание личной комнаты 」',
-                        value: 'Вы получите доступ к созданию личных комнат до конца боевого пропуска',
-                    },
-                    {
-                        name: '「 Улучшение личной роли 」',
-                        value: 'Ваша роль станет выше всех и будет отображаться в списке участников',
-                    },
-                ],
+                fields: [fieldsItems],
             }
         ],
         components: [menu]

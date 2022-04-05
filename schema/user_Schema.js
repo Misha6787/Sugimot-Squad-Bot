@@ -36,9 +36,9 @@ const user_Schema = mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            cost: {
-                type: Number,
-                default: 0
+            date: {
+                type: Date,
+                default: 'Thu Jan 01 1970 03:00:00 GMT+0300 (Москва, стандартное время)'
             }
         },
         move_members: {
@@ -46,9 +46,9 @@ const user_Schema = mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            cost: {
-                type: Number,
-                default: 0
+            date: {
+                type: Date,
+                default: 'Thu Jan 01 1970 03:00:00 GMT+0300 (Москва, стандартное время)'
             }
         },
         private_role: {
@@ -59,6 +59,10 @@ const user_Schema = mongoose.Schema({
             used_command: {
                 type: Boolean,
                 default: false
+            },
+            private_role_id: {
+                type: Number,
+                default: 0
             }
         },
         create_private_room: {
