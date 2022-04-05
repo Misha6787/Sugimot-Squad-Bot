@@ -75,7 +75,7 @@ const battlePassTimer = async (bot, deadline) => {
                 member.roles.remove('960895931065200720');
             }
         })
-    }, 1000*60);
+    }, 1000*60*60);
 }
 
 module.exports = battlePassTimer

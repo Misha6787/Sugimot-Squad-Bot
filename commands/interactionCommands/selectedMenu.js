@@ -33,11 +33,17 @@ module.exports = async (bot, interaction) => {
     const permissionStatus = User.permissions[interaction.values[0]].status ? User.permissions[interaction.values[0]].status : User.permissions[interaction.values[0]]
     let permissionBuy = false;
 
+    const days = 2;
+    const today = new Date()
+    const dayClose = new Date(today)
+    dayClose.setDate(dayClose.getDate() + days)
+
     switch (interaction.values[0]) {
         case 'mute_members':
             if (User.money >= Permissions_bp.options.price) {
                 User.money -= Permissions_bp.options.price;
                 User.permissions[interaction.values[0]].status = true;
+                User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895927109943306');
             } else {
                 isNotMoney = true;
@@ -47,6 +53,7 @@ module.exports = async (bot, interaction) => {
             if (User.money >= Permissions_bp.options.price) {
                 User.money -= Permissions_bp.options.price;
                 User.permissions[interaction.values[0]].status = true;
+                User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895931065200720');
             } else {
                 isNotMoney = true;

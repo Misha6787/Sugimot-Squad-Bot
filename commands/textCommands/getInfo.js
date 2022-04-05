@@ -7,25 +7,23 @@ module.exports = async (bot,message,args,argsF) => {
     const User = await bot.User.find({guildId: message.guildId});
     const thisUser = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
     let guild = await bot.guilds.fetch('777301995803377704');
+    const days = 2;
+    const today = new Date()
+    const tomorrow = new Date(today)
 
-    const PermissionsBattlePass = await bot.Permissions_battle_pass.find();
-
-    // const option_5 = {
-    //     label: 'Улучшение личной роли',
-    //     description: 'Ваша роль станет выше всех и будет отображаться в списке участников',
-    //     value: 'upgrade_private_role'
-    // }
-    let arr = [];
-
-    PermissionsBattlePass.forEach(item => {
-        arr.push({
-            label: item.options.label,
-            description: item.options.description,
-            value: item.name
-        })
+    User.forEach(item => {
+        if (thisUser.id === item.id) {
+            //console.log(new Date(item.permissions.mute_members.date))
+            //console.log(new Date(dateNow).getTime())
+            //console.log(new Date(dateNow + active_days).getTime())
+            //tomorrow.setDate(tomorrow.getDate() + days)
+            const member = guild.members.cache.get(User.id)
+            console.log(member)
+        }
+        // if (new Date(item.permissions.mute.members.date) >= new Date()) {
+        //
+        // }
     })
-
-    console.log(arr)
 
 
     //console.log(User)
