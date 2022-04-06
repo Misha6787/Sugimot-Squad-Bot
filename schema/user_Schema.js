@@ -36,20 +36,12 @@ const user_Schema = mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            date: {
-                type: Date,
-                default: 'Thu Jan 01 1970 03:00:00 GMT+0300 (Москва, стандартное время)'
-            }
         },
         move_members: {
             status: {
                 type: Boolean,
                 default: false
             },
-            date: {
-                type: Date,
-                default: 'Thu Jan 01 1970 03:00:00 GMT+0300 (Москва, стандартное время)'
-            }
         },
         private_role: {
             status: {

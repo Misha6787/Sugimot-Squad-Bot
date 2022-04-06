@@ -34,28 +34,39 @@ module.exports = async (bot, interaction) => {
     let permissionBuy = false;
 
     const days = 2;
-    const today = new Date()
-    const dayClose = new Date(today)
-    dayClose.setDate(dayClose.getDate() + days)
+
+    const timeToClose = 1000 * 60 * 60 * 24 * days;
 
     switch (interaction.values[0]) {
         case 'mute_members':
-            if (User.money >= Permissions_bp.options.price) {
+
+            permissionBuy = interaction.member.roles.cache.find(role => role.id === "960895927109943306") ? interaction.member.roles.cache.find(role => role.id === "960895927109943306") : '';
+
+            if (User.money >= Permissions_bp.options.price && !permissionBuy) {
                 User.money -= Permissions_bp.options.price;
+
                 User.permissions[interaction.values[0]].status = true;
-                User.permissions[interaction.values[0]].date = dayClose;
+                // User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895927109943306');
-            } else {
+
+                setTimeout(() => {
+                    interaction.member.roles.remove('960895927109943306')
+                }, timeToClose)
+
+            } else if (!permissionBuy) {
                 isNotMoney = true;
             }
             break
         case 'move_members':
-            if (User.money >= Permissions_bp.options.price) {
+
+            permissionBuy = interaction.member.roles.cache.find(role => role.id === "960895931065200720") ? interaction.member.roles.cache.find(role => role.id === "960895931065200720") : '';
+
+            if (User.money >= Permissions_bp.options.price && !permissionBuy) {
                 User.money -= Permissions_bp.options.price;
                 User.permissions[interaction.values[0]].status = true;
-                User.permissions[interaction.values[0]].date = dayClose;
+                // User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895931065200720');
-            } else {
+            } else if (!permissionBuy) {
                 isNotMoney = true;
             }
             break
