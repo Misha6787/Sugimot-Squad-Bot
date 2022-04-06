@@ -106,14 +106,14 @@ module.exports = async (bot, interaction) => {
         });
     } else {
         if (interaction.isSelectMenu() && interaction.customId === "select") {
-            const emded = new MessageEmbed()
+            const embed = new MessageEmbed()
                 .setTitle('Поздравляю с приобритением привелегий!')
                 .setDescription('Приятного времяпривождения в Sugimoto Squad!')
                 .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
                 .setColor('GREEN')
                 .setTimestamp()
             interaction.reply({
-                embeds: [emded],
+                embeds: [embed],
                 ephemeral: true
             });
         }
