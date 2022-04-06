@@ -21,6 +21,13 @@ module.exports = async (bot,message,args,argsF) => {
     //     // console.log(Users[user])
     // }
 
+    // Users.forEach(item => {
+    //     if (item.name === "Illuminat") {
+    //         item.money += 100;
+    //         item.save();
+    //     }
+    // })
+
     //Users.save()
     //console.log(User)
 }

@@ -70,11 +70,13 @@ const battlePassTimer = async (bot, deadline) => {
                 item.permissions.mute_members.status = false;
                 item.permissions.mute_members.date = 0;
                 member.roles.remove('960895927109943306');
+                item.save();
             } else if (new Date(item.permissions.move_members.date) <= new Date()) {
                 const member = guild.members.cache.get(User.id)
                 item.permissions.move_members.status = false;
                 item.permissions.move_members.date = 0;
                 member.roles.remove('960895931065200720');
+                item.save();
             }
         })
     }, 1000*60*60);

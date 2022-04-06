@@ -37,7 +37,7 @@ const user_Schema = mongoose.Schema({
                 default: false
             },
             date: {
-                type: Number,
+                type: Date,
                 default: 'Thu Jan 01 1970 03:00:00 GMT+0300 (Москва, стандартное время)'
             }
         },
