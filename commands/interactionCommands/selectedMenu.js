@@ -34,39 +34,42 @@ module.exports = async (bot, interaction) => {
     let permissionBuy = false;
 
     const days = 2;
-
-    const timeToClose = 1000 * 60 * 60 * 24 * days;
+    const today = new Date()
+    const dayClose = new Date(today)
+    dayClose.setDate(dayClose.getDate() + days)
 
     switch (interaction.values[0]) {
         case 'mute_members':
 
-            permissionBuy = interaction.member.roles.cache.find(role => role.id === "960895927109943306") ? interaction.member.roles.cache.find(role => role.id === "960895927109943306") : '';
+            // interaction.member.roles.cache.forEach(item => {
+            //     if (item.id === '960895927109943306') {
+            //         isBuyRole = true;
+            //     }
+            // })
 
-            if (User.money >= Permissions_bp.options.price && !permissionBuy) {
+            if (User.money >= Permissions_bp.options.price) {
                 User.money -= Permissions_bp.options.price;
 
                 User.permissions[interaction.values[0]].status = true;
-                // User.permissions[interaction.values[0]].date = dayClose;
+                User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895927109943306');
 
-                setTimeout(() => {
-                    interaction.member.roles.remove('960895927109943306')
-                }, timeToClose)
+                // setTimeout(() => {
+                //     interaction.member.roles.remove('960895927109943306')
+                // }, timeToClose)
 
-            } else if (!permissionBuy) {
+            } else {
                 isNotMoney = true;
             }
             break
         case 'move_members':
 
-            permissionBuy = interaction.member.roles.cache.find(role => role.id === "960895931065200720") ? interaction.member.roles.cache.find(role => role.id === "960895931065200720") : '';
-
-            if (User.money >= Permissions_bp.options.price && !permissionBuy) {
+            if (User.money >= Permissions_bp.options.price) {
                 User.money -= Permissions_bp.options.price;
                 User.permissions[interaction.values[0]].status = true;
-                // User.permissions[interaction.values[0]].date = dayClose;
+                User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895931065200720');
-            } else if (!permissionBuy) {
+            } else {
                 isNotMoney = true;
             }
             break
@@ -106,14 +109,14 @@ module.exports = async (bot, interaction) => {
         });
     } else {
         if (interaction.isSelectMenu() && interaction.customId === "select") {
-            const embed = new MessageEmbed()
+            const emded = new MessageEmbed()
                 .setTitle('Поздравляю с приобритением привелегий!')
                 .setDescription('Приятного времяпривождения в Sugimoto Squad!')
                 .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
                 .setColor('GREEN')
                 .setTimestamp()
             interaction.reply({
-                embeds: [embed],
+                embeds: [emded],
                 ephemeral: true
             });
         }
