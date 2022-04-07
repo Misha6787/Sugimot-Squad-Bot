@@ -66,13 +66,13 @@ const battlePassTimer = async (bot, deadline) => {
         const User = await bot.User.find({guildId: message.guildId});
         User.forEach(item => {
             if (new Date(item.permissions.mute_members.date) <= new Date()) {
-                const member = guild.members.cache.get(User.id)
+                const member = guild.members.cache.get(item.id)
                 item.permissions.mute_members.status = false;
                 item.permissions.mute_members.date = 0;
                 member.roles.remove('960895927109943306');
                 item.save();
             } else if (new Date(item.permissions.move_members.date) <= new Date()) {
-                const member = guild.members.cache.get(User.id)
+                const member = guild.members.cache.get(item.id)
                 item.permissions.move_members.status = false;
                 item.permissions.move_members.date = 0;
                 member.roles.remove('960895931065200720');

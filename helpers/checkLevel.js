@@ -23,9 +23,9 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
 
             const previousBattlePassLevel = await getCurrentLevel(bot, previousLevel);
 
-            const elementrole = battlePassLevel.element.nameRole;
+            const elementRole = battlePassLevel.element.nameRole;
 
-            const previousElementrole = previousBattlePassLevel.element.nameRole;
+            const previousElementRole = previousBattlePassLevel.element.nameRole;
 
             let nextLevelRole,
                 previousLevelRole;
@@ -41,20 +41,22 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
 
             member.guild.roles.cache.forEach(item => {
                 if (battlePassLevel.level === 0) {
-                    if (item.name === `${battlePassLevel.level} | ${elementrole}`) {
+                    if (item.name === `${battlePassLevel.level} | ${elementRole}`) {
                         nextLevelRole = item;
                         previousLevelRole = item;
                     }
                 } else {
-                    if (item.name === `${battlePassLevel.level} | ${elementrole}`) {
+                    if (item.name === `${battlePassLevel.level} | ${elementRole}`) {
                         nextLevelRole = item;
-                    } else if (item.name === `${previousBattlePassLevel.level} | ${previousElementrole}`) {
+                    } else if (item.name === `${previousBattlePassLevel.level} | ${previousElementRole}`) {
                         previousLevelRole = item;
                     }
                 }
             })
 
-            await member.roles.remove(previousLevelRole.id);
+            if (previousLevelRole) {
+                await member.roles.remove(previousLevelRole.id);
+            }
             await member.roles.add(nextLevelRole.id);
 
             // let channelFlood = await bot.channels.fetch('777512811466981376')
