@@ -63,20 +63,20 @@ const battlePassTimer = async (bot, deadline) => {
 
     //время привелегий
     setInterval(async () => {
-        const User = await bot.User.find({guildId: message.guildId});
-        User.forEach(item => {
-            if (new Date(item.permissions.mute_members.date) <= new Date()) {
-                const member = guild.members.cache.get(item.id)
-                item.permissions.mute_members.status = false;
-                item.permissions.mute_members.date = 0;
+        const Users = await bot.User.find({guildId: message.guildId});
+        Users.forEach(user => {
+            if (new Date(user.permissions.mute_members.date) <= new Date() && user.permissions.mute_members.status) {
+                const member = guild.members.cache.get(user.id)
+                user.permissions.mute_members.status = false;
+                user.permissions.mute_members.date = 0;
                 member.roles.remove('960895927109943306');
-                item.save();
-            } else if (new Date(item.permissions.move_members.date) <= new Date()) {
-                const member = guild.members.cache.get(item.id)
-                item.permissions.move_members.status = false;
-                item.permissions.move_members.date = 0;
+                user.save();
+            } else if (new Date(item.permissions.move_members.date) <= new Date() && user.permissions.move_members.status) {
+                const member = guild.members.cache.get(user.id)
+                user.permissions.move_members.status = false;
+                user.permissions.move_members.date = 0;
                 member.roles.remove('960895931065200720');
-                item.save();
+                user.save();
             }
         })
     }, 1000*60*60);

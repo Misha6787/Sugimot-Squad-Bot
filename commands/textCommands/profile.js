@@ -35,6 +35,7 @@ module.exports = async (bot,message,args,argsF) => {
     // ======================================= \\
 
     const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
+    const Guild = await bot.guilds.fetch(message.guildId);
 
     if (User === null) return;
 
@@ -53,22 +54,26 @@ module.exports = async (bot,message,args,argsF) => {
                             **Sugimoto Coins:** ${balance}
                         `
 
-    const exampleEmbedImage = new MessageEmbed()
-        .setImage(`${gif}`)
-        .setColor('#2f3136')
+    // const exampleEmbedImage = new MessageEmbed()
+    //     .setImage(`${gif}`)
+    //     .setColor('#2f3136')
     const exampleEmbed = new MessageEmbed()
         .setTitle('Основная информация: ')
         .setDescription(`
                     **Имя пользователя:** ${User.name}#${message.author.discriminator}
                     **Дата создания аккаунта: ** <t:${Math.floor(new Date(message.author.createdAt).getTime()/1000)}:D>
                     **Дата входа на сервер:** <t:${Math.floor(new Date(message.member.joinedAt).getTime()/1000)}:D>`
-                    + if_Battle_pass
+                    + if_Battle_pass +
+                    '\u200b'
         )
-        .setThumbnail(`${message.author.avatarURL()}`)
-        .setAuthor(`Сегодня о ${User.name}`, `${message.author.avatarURL()}`)
+        .setThumbnail(message.author.avatarURL())
+        .setImage(gif)
+        .setAuthor(`Сегодня о ${User.name}`, message.author.avatarURL())
+        .setTimestamp()
+        .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
         .setColor('#2f3136')
 
-    message.channel.send({ embeds:  [ exampleEmbed, exampleEmbedImage ]});
+    message.channel.send({ embeds:  [ exampleEmbed ]});
 
 }
 

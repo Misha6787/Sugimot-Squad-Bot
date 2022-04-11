@@ -3,14 +3,29 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (bot,message,args,argsF) => {
 
     // Проверки роли, и проверка на бота и т.д \\
-
+    const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
     let ifRoles = 0;
-    message.member.roles.cache.forEach(item => item.id === '944259753587126333' ? ifRoles++ : '')
+    message.member.roles.cache.forEach(item => {
+        if (item.id === '944259753587126333' && User.permissions.private_role.status) {
+            ifRoles++;
+        }
+    })
     if (ifRoles === 0) {
         message.channel.send({
             embeds: [
                 {
                     title: `У вас недостаточно прав!`,
+                    color: '#ff0000'
+                }
+            ]
+        });
+        return;
+    }
+    if (User.permissions.private_role.private_role_id) {
+        message.channel.send({
+            embeds: [
+                {
+                    title: `У вас уже есть личная роль!`,
                     color: '#ff0000'
                 }
             ]
@@ -23,7 +38,7 @@ module.exports = async (bot,message,args,argsF) => {
                 {
                     title: `Помошник по командам`,
                     description: '**s!myRole "Название", "Цвет" **\n или \n**s!личная роль "Название", "Цвет"**',
-                    color: 'RANDOM'
+                    color: '#f7ff00'
                 }
             ]
         });
@@ -58,7 +73,7 @@ module.exports = async (bot,message,args,argsF) => {
                 {
                     title: `Роль с таким именем уже существует`,
                     description: 'Чееееел придумай что-то оригинальное, к примеру **Адепт Гачи, Столп Дискорда, -=$DotaMasterSuperCool228$=-**',
-                    color: '#ff0000'
+                    color: '#f7ff00'
                 }
             ]
         });
@@ -70,7 +85,7 @@ module.exports = async (bot,message,args,argsF) => {
             embeds: [
                 {
                     title: `Слишком длинное название роли!`,
-                    color: '#ff0000'
+                    color: '#f7ff00'
                 }
             ]
         });
@@ -83,7 +98,7 @@ module.exports = async (bot,message,args,argsF) => {
                 {
                     title: `Неправильный или несуществующий цвет`,
                     description: 'Неправильный код HEX',
-                    color: '#ff0000'
+                    color: '#f7ff00'
                 }
             ]
         });
@@ -105,7 +120,7 @@ module.exports = async (bot,message,args,argsF) => {
                     inline: true
                 }
             )
-            .setColor('#ff0000')
+            .setColor('#f7ff00')
 
         message.channel.send({ embeds:  [ embed ]});
         return;
@@ -121,6 +136,11 @@ module.exports = async (bot,message,args,argsF) => {
                     }
                 ]
             })
+
+            User.permissions.private_role.used_command = true;
+            User.permissions.private_role.private_role_id = role.id;
+
+            User.save();
 
             message.member.roles.add(role.id);
         })

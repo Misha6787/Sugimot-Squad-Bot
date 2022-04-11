@@ -28,97 +28,104 @@ module.exports = async (bot, interaction) => {
 
     const User = await bot.User.findOne({id: interaction.user.id, guildId: interaction.guild.id});
     const Permissions_bp = await bot.Permissions_battle_pass.findOne({name: interaction.values[0]});
-
-    let isNotMoney = false;
-    const permissionStatus = User.permissions[interaction.values[0]].status ? User.permissions[interaction.values[0]].status : User.permissions[interaction.values[0]]
-    let permissionBuy = false;
+    const permissionStatus = User.permissions[interaction.values[0]].status ? User.permissions[interaction.values[0]].status : User.permissions[interaction.values[0]];
 
     const days = 2;
-    const today = new Date()
-    const dayClose = new Date(today)
-    dayClose.setDate(dayClose.getDate() + days)
+    const dayClose = User.permissions[interaction.values[0]].date <= new Date() ? new Date() : User.permissions[interaction.values[0]].date;
+    if (dayClose) {
+        dayClose.setDate(dayClose.getDate() + days);
+    }
 
-    switch (interaction.values[0]) {
-        case 'mute_members':
 
-            // interaction.member.roles.cache.forEach(item => {
-            //     if (item.id === '960895927109943306') {
-            //         isBuyRole = true;
-            //     }
-            // })
+    // Получение голосовой комнаты для создания приватной комнаты
+    let guild = await bot.guilds.fetch(interaction.guildId);
+    let channel = await guild.channels.fetch('961719339080376412');
 
-            if (User.money >= Permissions_bp.options.price) {
-                User.money -= Permissions_bp.options.price;
+    let isNotMoneyOrBuyPermission = false;
+    let embed;
 
-                User.permissions[interaction.values[0]].status = true;
+    // Проверка на то есть ли деньги на привилегию или куплена ли эта привилегия вовсе (исключение мут и перемещение игроков ее можно продлить обновив таймер)
+    if ((User.money >= Permissions_bp.options.price && !permissionStatus) ||
+        (User.money >= Permissions_bp.options.price && interaction.values[0] === 'mute_members') ||
+        (User.money >= Permissions_bp.options.price && interaction.values[0] === 'move_members')) {
+
+        User.money -= Permissions_bp.options.price;
+        User.permissions[interaction.values[0]].status = true;
+
+        switch (interaction.values[0]) {
+            case 'mute_members':
+
+                User.permissions[interaction.values[0]].date = 0;
                 User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895927109943306');
 
-                // setTimeout(() => {
-                //     interaction.member.roles.remove('960895927109943306')
-                // }, timeToClose)
+                break
+            case 'move_members':
 
-            } else {
-                isNotMoney = true;
-            }
-            break
-        case 'move_members':
-
-            if (User.money >= Permissions_bp.options.price) {
-                User.money -= Permissions_bp.options.price;
-                User.permissions[interaction.values[0]].status = true;
+                User.permissions[interaction.values[0]].date = 0;
                 User.permissions[interaction.values[0]].date = dayClose;
                 interaction.member.roles.add('960895931065200720');
-            } else {
-                isNotMoney = true;
-            }
-            break
-        case 'private_role':
-            if (permissionStatus === true) permissionBuy = true
-            if (User.money >= Permissions_bp.options.price) {
-                User.money -= Permissions_bp.options.price;
-                User.permissions[interaction.values[0]].status = true;
-            } else {
-                isNotMoney = true;
-            }
-            break
-        case 'upgrade_private_role':
-        case 'create_private_room':
-            if (permissionStatus === true) permissionBuy = true;
-            if (User.money >= Permissions_bp.options.price) {
-                User.money -= Permissions_bp.options.price;
-                User.permissions[interaction.values[0]] = true;
-            } else {
-                isNotMoney = true;
-            }
-            break
+
+                break
+            case 'private_role':
+
+                embed = new MessageEmbed()
+                    .setTitle('Поздравляю с приобритением привелегий!')
+                    .setDescription('Что-бы сделать себе личную роль нужно прописать эту команду - **?личнаяроль "Название" "Цвет"**')
+                    .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
+                    .setColor('GREEN')
+                    .setTimestamp()
+
+                break
+            case 'upgrade_private_role':
+                // Изменение (улучшение) роли, с помощью выведения этой роли в список участников отдельно от других
+                let guildRole = await interaction.guild.roles.fetch('963011307785830481')
+                guildRole.setHoist(true)
+                    .catch(console.error);
+
+                embed = new MessageEmbed()
+                    .setTitle('Поздравляю с приобритением привелегий!')
+                    .setDescription('Что-бы сделать себе личную роль нужно прописать эту команду - **?личнаяроль "Название" "Цвет"**')
+                    .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
+                    .setColor('GREEN')
+                    .setTimestamp()
+
+                break
+            case 'create_private_room':
+
+                embed = new MessageEmbed()
+                    .setTitle('Поздравляю с приобритением привелегий!')
+                    .setDescription(`Вы получиили доступ к голосовому каналу <#961719339080376412>!`)
+                    .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
+                    .setColor('GREEN')
+                    .setTimestamp()
+                // Выдача доступа к голосовой комнате
+                await channel.permissionOverwrites.edit(User.id, { CONNECT: true });
+
+                break
+        }
+        User.save();
+    } else {
+        isNotMoneyOrBuyPermission = true;
     }
 
-    User.save();
-
-    if (isNotMoney || permissionBuy) {
-        const notMoneyEmbed = new MessageEmbed()
+    if (isNotMoneyOrBuyPermission) {
+        embed = new MessageEmbed()
             .setTitle('Извините, вы не смогли получить эту привилегию')
             .setDescription('У вас не хватает койнов для этой привилегий или это привилегия уже приобритена')
             .setColor('RED')
 
-
-        interaction.reply({
-            embeds: [notMoneyEmbed],
-            ephemeral: true
-        });
-    } else {
-        if (interaction.isSelectMenu() && interaction.customId === "select") {
-            const emded = new MessageEmbed()
-                .setTitle('Поздравляю с приобритением привелегий!')
-                .setDescription('Приятного времяпривождения в Sugimoto Squad!')
-                .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
-                .setColor('GREEN')
-                .setTimestamp()
-            interaction.reply({
-                embeds: [emded],
-                ephemeral: true
-            });
-        }
+    } else if (interaction.isSelectMenu() && interaction.customId === "select") {
+        embed = embed ? embed : new MessageEmbed()
+            .setTitle('Поздравляю с приобритением привелегий!')
+            .setDescription('Приятного времяпривождения в Sugimoto Squad!')
+            .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
+            .setColor('GREEN')
+            .setTimestamp()
     }
+
+    interaction.reply({
+        embeds: [embed],
+        ephemeral: true
+    });
 }
