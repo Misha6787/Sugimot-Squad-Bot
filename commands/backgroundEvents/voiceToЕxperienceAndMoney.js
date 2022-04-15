@@ -40,7 +40,7 @@ module.exports = async (bot, oldState, newState) => {
 
         User.voiceInterval = setInterval(async () => {
             User.money += 1;
-            User.experience += 10;
+            User.experience += 5;
 
             User.save();
 

@@ -3,6 +3,9 @@ const getCurrentLevel = async (bot, levelUser) => {
     const battle_pass_anime = await bot.AnimeMonth;
 
     let currentLevel = levelUser - (levelUser % 10);
+    if (currentLevel > 100) {
+        currentLevel = 100;
+    }
     let thisLevelElement = battle_pass_anime.level[currentLevel];
 
     // let currentIndex;

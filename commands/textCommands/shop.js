@@ -42,13 +42,17 @@ module.exports = async (bot,message,args,argsF) => {
         .setMaxValues(1);
     const menu = new MessageActionRow()
         .addComponents(selectMenu);
+
+    const embed = new MessageEmbed()
+        .setTitle('Добро пожаловать в Магазинчик Sugimoto!')
+        .setDescription('Выберите интересующую вас привелегию в выпадающем списке')
+        .setFields(fieldsItems)
+        .setColor('#2f3136')
+        .setTimestamp()
+
     message.channel.send({
         embeds: [
-            {
-                title: 'Добро пожаловать в Магазинчик Sugimoto!',
-                description: 'Выберите выберите интересующую вас привелегию в выпадаюзем списке',
-                fields: [fieldsItems],
-            }
+            embed
         ],
         components: [menu]
     });

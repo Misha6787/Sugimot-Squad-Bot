@@ -6,9 +6,9 @@ module.exports = async (bot,message,args,argsF) => {
 
     let ifRoles = 0;
     message.member.roles.cache.forEach(item => {
-        if (item.id === '777322473523249182' ||
-            item.id === '900529098571546654' ||
+        if (item.id === '900529098571546654' ||
             item.id === '777304185380274206' ||
+            item.id === '914833857537261598' ||
             item.id === '777304566844751902') {
             ifRoles++;
         }
@@ -55,25 +55,36 @@ module.exports = async (bot,message,args,argsF) => {
             ]
         });
 
+        const animeMonth = await bot.AnimeMonth;
+        const zeroLevel = animeMonth.level[0];
 
-        const exampleEmbedImage = new MessageEmbed()
-            .setImage('https://i.imgur.com/m7lznVe.gif')
-            .setColor('#2f3136')
+        const Guild = await bot.guilds.fetch(message.guildId);
 
         const exampleEmbed = new MessageEmbed()
             .setTitle('Поздравляем с приобритением Battle Pass на нашем сервере Sugimoto Squad!')
-            .setDescription('Теперь у вас есть доступ к новым чатам, валюте сервера и личным ролям!')
-            .setThumbnail('https://i.imgur.com/eHX2Nbc.png')
+            .setDescription(`
+                Вы получили доступ к роли **${zeroLevel.nameRole}**, подробная информация о Battle Pass - **"${animeMonth.nameAnime}"** ниже **︾**
+                
+                • **Доступ к категорий Battle Pass**
+                • **Возможность приобретать привилегий**
+                • **Доступ к закрытым чатам боевого пропуска**
+                • **Эксклюзивные уровневые роли**
+                • **Участие в розыгрыше в конце месяца**
+                • **Доступ к музыкальному боту**
+                • **Возможность взглянуть на дискорд с другой стороны**
+            `)
+            .setImage('https://c.tenor.com/Hk9OVyhG5FMAAAAd/iguro-obanai-shinazugawa-sanemi.gif')
+            .setThumbnail(zeroLevel.receivingGif)
+            .setTimestamp()
+            .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
             //.setAuthor(`Сегодня о ${user.username}`, `${message.author.avatarURL()}`)
             .setColor('#2f3136')
 
         user.send({
             embeds: [
                 exampleEmbed,
-                exampleEmbedImage
             ]
         })
-             .then(message => console.log('complete action'))
              .catch(console.error);
 
     } catch {

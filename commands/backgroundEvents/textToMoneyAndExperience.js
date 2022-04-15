@@ -21,7 +21,7 @@ module.exports = async (bot,message,args,argsF) => {
     if (symbols >= 500) {
         symbols -= 500
         User.money += 10
-        User.experience += 100;
+        User.experience += 75;
 
         User.countSymbol = symbols;
 
@@ -41,8 +41,8 @@ module.exports = async (bot,message,args,argsF) => {
                             Участник <@${User.id}> получил койны
 
                             Уровень БП: **${User.level_battle_pass}**
-                            Опыт: **${User.experience - 100} > ${User.experience}**
-                            Деньги: **${User.money - 10} > ${User.money}**
+                            Опыт: **${User.experience}**
+                            Деньги: **${User.money}**
                         `)
             .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
             .setTimestamp()

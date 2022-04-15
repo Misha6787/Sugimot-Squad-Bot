@@ -28,7 +28,7 @@ module.exports = async (bot, interaction) => {
 
     const User = await bot.User.findOne({id: interaction.user.id, guildId: interaction.guild.id});
     const Permissions_bp = await bot.Permissions_battle_pass.findOne({name: interaction.values[0]});
-    const permissionStatus = User.permissions[interaction.values[0]].status ? User.permissions[interaction.values[0]].status : User.permissions[interaction.values[0]];
+    const permissionStatus = User.permissions[interaction.values[0]].status ? User.permissions[interaction.values[0]].status : User.permissions[interaction.values[0]].status;
 
     const days = 2;
     const dayClose = User.permissions[interaction.values[0]].date <= new Date() ? new Date() : User.permissions[interaction.values[0]].date;
@@ -43,6 +43,9 @@ module.exports = async (bot, interaction) => {
 
     let isNotMoneyOrBuyPermission = false;
     let embed;
+
+    console.log(Permissions_bp.options.price)
+    console.log(permissionStatus)
 
     // Проверка на то есть ли деньги на привилегию или куплена ли эта привилегия вовсе (исключение мут и перемещение игроков ее можно продлить обновив таймер)
     if ((User.money >= Permissions_bp.options.price && !permissionStatus) ||
@@ -79,20 +82,23 @@ module.exports = async (bot, interaction) => {
                 break
             case 'upgrade_private_role':
                 // Изменение (улучшение) роли, с помощью выведения этой роли в список участников отдельно от других
-                let guildRole = await interaction.guild.roles.fetch('963011307785830481')
+                let guildRole = await interaction.guild.roles.fetch(User.permissions.private_role.private_role_id)
+                console.log(User.permissions.private_role.private_role_id)
+                console.log(guildRole)
+                User.permissions[interaction.values[0]] = true;
                 guildRole.setHoist(true)
                     .catch(console.error);
 
                 embed = new MessageEmbed()
                     .setTitle('Поздравляю с приобритением привелегий!')
-                    .setDescription('Что-бы сделать себе личную роль нужно прописать эту команду - **?личнаяроль "Название" "Цвет"**')
+                    .setDescription('Теперь ваша роль выше остальных')
                     .setImage('https://c.tenor.com/r0ViAtLLeKAAAAAC/muichiro-hihih.gif')
                     .setColor('GREEN')
                     .setTimestamp()
 
                 break
             case 'create_private_room':
-
+                User.permissions[interaction.values[0]] = true;
                 embed = new MessageEmbed()
                     .setTitle('Поздравляю с приобритением привелегий!')
                     .setDescription(`Вы получиили доступ к голосовому каналу <#961719339080376412>!`)

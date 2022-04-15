@@ -71,7 +71,7 @@ const battlePassTimer = async (bot, deadline) => {
                 user.permissions.mute_members.date = 0;
                 member.roles.remove('960895927109943306');
                 user.save();
-            } else if (new Date(item.permissions.move_members.date) <= new Date() && user.permissions.move_members.status) {
+            } else if (new Date(user.permissions.move_members.date) <= new Date() && user.permissions.move_members.status) {
                 const member = guild.members.cache.get(user.id)
                 user.permissions.move_members.status = false;
                 user.permissions.move_members.date = 0;

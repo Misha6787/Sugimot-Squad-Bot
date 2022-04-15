@@ -21,23 +21,31 @@ module.exports = async (bot,message,args,argsF) => {
         });
         return;
     }
-    if (User.permissions.private_role.private_role_id) {
-        message.channel.send({
-            embeds: [
-                {
-                    title: `У вас уже есть личная роль!`,
-                    color: '#ff0000'
-                }
-            ]
-        });
-        return;
-    }
+    // if (User.permissions.private_role.private_role_id) {
+    //     message.channel.send({
+    //         embeds: [
+    //             {
+    //                 title: `У вас уже есть личная роль!`,
+    //                 color: '#ff0000'
+    //             }
+    //         ]
+    //     });
+    //     return;
+    // }
     if (args[0] === undefined || args.length < 2) {
         message.channel.send({
             embeds: [
                 {
                     title: `Помошник по командам`,
-                    description: '**s!myRole "Название", "Цвет" **\n или \n**s!личная роль "Название", "Цвет"**',
+                    description: `
+                        Для создания личной роли необходимо задать имя и цвет роли (цвет может быть как и в HEX формате #000000 так и просто словом Red)
+                       
+                        **Пример: 
+                        \`?личнаяроль MyBestRole #696969\`
+                        или
+                        \`?личнаяроль MyAwesomeRole red\`
+                        **
+                    `,
                     color: '#f7ff00'
                 }
             ]
@@ -80,7 +88,7 @@ module.exports = async (bot,message,args,argsF) => {
         return;
     }
 
-    if (roleName.length > 12 ) {
+    if (roleName.length > 24 ) {
         message.channel.send({
             embeds: [
                 {

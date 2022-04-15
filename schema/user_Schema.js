@@ -61,8 +61,8 @@ const user_Schema = mongoose.Schema({
                 default: false
             },
             private_role_id: {
-                type: Number,
-                default: 0
+                type: String,
+                default: ''
             }
         },
         create_private_room: {
