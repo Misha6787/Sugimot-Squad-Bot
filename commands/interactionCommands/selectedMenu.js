@@ -44,9 +44,6 @@ module.exports = async (bot, interaction) => {
     let isNotMoneyOrBuyPermission = false;
     let embed;
 
-    console.log(Permissions_bp.options.price)
-    console.log(permissionStatus)
-
     // Проверка на то есть ли деньги на привилегию или куплена ли эта привилегия вовсе (исключение мут и перемещение игроков ее можно продлить обновив таймер)
     if ((User.money >= Permissions_bp.options.price && !permissionStatus) ||
         (User.money >= Permissions_bp.options.price && interaction.values[0] === 'mute_members') ||
@@ -83,8 +80,7 @@ module.exports = async (bot, interaction) => {
             case 'upgrade_private_role':
                 // Изменение (улучшение) роли, с помощью выведения этой роли в список участников отдельно от других
                 let guildRole = await interaction.guild.roles.fetch(User.permissions.private_role.private_role_id)
-                console.log(User.permissions.private_role.private_role_id)
-                console.log(guildRole)
+
                 User.permissions[interaction.values[0]] = true;
                 guildRole.setHoist(true)
                     .catch(console.error);

@@ -14,7 +14,6 @@ module.exports = async (bot,message,args,argsF) => {
     //     .then(updated => console.log(`Role hoisted: ${updated.hoist}`))
     //     .catch(console.error);
 
-
     // const days = 2;
     // const dayClose = thisUser.permissions.mute_members.date <= new Date() ? new Date() : thisUser.permissions.mute_members.date;
     //

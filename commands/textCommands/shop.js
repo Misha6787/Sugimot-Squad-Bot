@@ -20,6 +20,8 @@ module.exports = async (bot,message,args,argsF) => {
 
     const PermissionsBattlePass = await bot.Permissions_battle_pass.find();
 
+    const Guild = await bot.guilds.fetch(message.guildId);
+
     let options = [];
     let fieldsItems = []
 
@@ -48,6 +50,7 @@ module.exports = async (bot,message,args,argsF) => {
         .setDescription('Выберите интересующую вас привелегию в выпадающем списке')
         .setFields(fieldsItems)
         .setColor('#2f3136')
+        .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
         .setTimestamp()
 
     message.channel.send({

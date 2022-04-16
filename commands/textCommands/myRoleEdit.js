@@ -1,9 +1,9 @@
-const { MessageEmbed } = require("discord.js");
-
+const {MessageEmbed} = require("discord.js");
 module.exports = async (bot,message,args,argsF) => {
 
     // Проверки роли, и проверка на бота и т.д \\
     const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
+
     let ifRoles = 0;
     message.member.roles.cache.forEach(item => {
         if (item.id === '944259753587126333' && User.permissions.private_role.status) {
@@ -21,29 +21,39 @@ module.exports = async (bot,message,args,argsF) => {
         });
         return;
     }
-    // if (User.permissions.private_role.private_role_id) {
-    //     message.channel.send({
-    //         embeds: [
-    //             {
-    //                 title: `У вас уже есть личная роль!`,
-    //                 color: '#ff0000'
-    //             }
-    //         ]
-    //     });
-    //     return;
-    // }
+    if (User.permissions.private_role.private_role_id === '0') {
+        message.channel.send({
+            embeds: [
+                {
+                    title: `У вас нету личной роли!`,
+                    color: '#ff0000'
+                }
+            ]
+        });
+        return;
+    }
+
+
+    // ================================= \\
+
+    const colors = ["DEFAULT","WHITE","AQUA","GREEN","BLUE","YELLOW","PURPLE","LUMINOUS_VIVID_PINK","FUCHSIA","GOLD","ORANGE","RED","GREY","NAVY","DARK_AQUA","DARK_GREEN","DARK_BLUE","DARK_PURPLE","DARK_VIVID_PINK","DARK_GOLD","DARK_ORANGE","DARK_RED","DARK_GREY","DARKER_GREY","LIGHT_GREY","DARK_NAVY","BLURPLE","GREYPLE","DARK_BUT_NOT_BLACK","NOT_QUITE_BLACK","RANDOM"];
+    const roleName = args[0],
+        roleColor = args[1];
+
+    let roleDuplicate;
+
     if (args[0] === undefined || args.length < 2) {
         message.channel.send({
             embeds: [
                 {
                     title: `Помошник по командам`,
                     description: `
-                        Для создания личной роли необходимо задать имя и цвет роли (цвет может быть как и в HEX формате #000000 так и просто словом Red)
+                        Для изменения личной роли необходимо задать имя и цвет роли (цвет может быть как и в HEX формате #000000 так и просто словом Red)
                        
                         **Пример: 
-                        \`?личнаяроль MyBestRole #696969\`
+                        \`?изменитьроль MyBestRole #696969\`
                         или
-                        \`?myRole MyAwesomeRole red\`
+                        \`?editRole MyAwesomeRole red\`
                         **
                     `,
                     color: '#f7ff00'
@@ -52,28 +62,6 @@ module.exports = async (bot,message,args,argsF) => {
         });
         return;
     }
-
-    // ================================= \\
-
-    const colors = ["DEFAULT","WHITE","AQUA","GREEN","BLUE","YELLOW","PURPLE","LUMINOUS_VIVID_PINK","FUCHSIA","GOLD","ORANGE","RED","GREY","NAVY","DARK_AQUA","DARK_GREEN","DARK_BLUE","DARK_PURPLE","DARK_VIVID_PINK","DARK_GOLD","DARK_ORANGE","DARK_RED","DARK_GREY","DARKER_GREY","LIGHT_GREY","DARK_NAVY","BLURPLE","GREYPLE","DARK_BUT_NOT_BLACK","NOT_QUITE_BLACK","RANDOM"];
-    const roleName = args.slice(0, args.length - 1).join(' '),
-        roleColor = args.slice(args.length - 1)[0];
-
-    let defaultRole,
-        rolePosition,
-        roleDuplicate;
-
-    message.member.guild.roles.cache.forEach(item => {
-        if (item.id === '944542807706718281') {
-            defaultRole = item;
-        }
-        if (item.id === '944504057219940393') {
-            rolePosition = item.position;
-        }
-        if (item.name === roleName) {
-            roleDuplicate = true;
-        }
-    })
 
     if (roleDuplicate) {
         message.channel.send({
@@ -133,40 +121,26 @@ module.exports = async (bot,message,args,argsF) => {
         message.channel.send({ embeds:  [ embed ]});
         return;
     }
-    await createPersonalRole(message.member.guild.roles, roleColor, roleName, rolePosition)
-        .then((role) => {
+
+
+    //let guildRole = await message.guild.roles.fetch(User.permissions.private_role.private_role_id)
+
+    //Изменение роли
+
+    message.guild.roles.edit(User.permissions.private_role.private_role_id, {name: roleName, color: roleColor.toUpperCase()})
+        .then(role => {
             message.channel.send({
                 embeds: [
                     {
-                        title: `Персональная роль успешно создана)`,
-                        description: `Была созданна роль <@&${role.id}> и выдана игроку <@${message.author.id}>`,
+                        title: `Персональная роль успешно изменена!`,
+                        description: `Была изменена роль <@&${role.id}> игрока <@${message.author.id}>`,
                         color: '#4fff29'
                     }
                 ]
             })
-
-            User.permissions.private_role.used_command = true;
-            User.permissions.private_role.private_role_id = role.id;
-
-            User.save();
-
-            message.member.roles.add(role.id);
         })
         .catch(console.error);
-
-    function createPersonalRole(roleManager, roleColor, name, posittion) {
-        return new Promise(async (resolve, reject) => {
-            //const _role_premium = roleManager.premiumSubscriberRole;
-            const _role = await roleManager.create({
-                name: name,
-                color: roleColor != "#ffffff" ? roleColor.toUpperCase() : defaultRole.color,
-                position: posittion,
-                //hoist: defaultRole.hoist
-            });
-            resolve(_role);
-        });
-    }
 }
 
-module.exports.names = ['личнаяроль', 'myrole'];
+module.exports.names = ['изменитьроль', 'editrole'];
 module.exports.type = 'for_all';
