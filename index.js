@@ -60,11 +60,11 @@ for (const file of commandFiles) {
     });
 }
 
-// Добовление команд текстовых картинок
-const textImageCommandFiles = fs.readdirSync("./commands/textImageCommands");
+// Добовление команд действия
+const actionsCommandsFiles = fs.readdirSync("./commands/actionsCommands");
 
-for (const file of textImageCommandFiles) {
-    let command = require(`./commands/textImageCommands/${file}`);
+for (const file of actionsCommandsFiles) {
+    let command = require(`./commands/actionsCommands/${file}`);
     command.names.forEach(el => {
         bot.commands.set(el, command);
     })

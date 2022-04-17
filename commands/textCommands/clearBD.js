@@ -27,18 +27,52 @@ module.exports = async (bot,message,args,argsF) => {
 
     const User = await bot.User.find({guildId: message.guildId});
 
+    const battle_pass_anime = await bot.AnimeMonth;
+
+    const battle_pass_anime_names =  []
+
+    for (let item in battle_pass_anime.level) {
+        if (item >= 0) {
+            battle_pass_anime_names.push(`${item} | ${battle_pass_anime.level[item].nameRole}`)
+        }
+    }
+
     User.forEach(item => {
         item.experience = 0;
         item.money = 0;
         item.countSymbol = 0;
         item.level_battle_pass = 0;
+        item.voiceInterval = 0;
+        item.permissions.create_private_room = false;
+
+        let member = message.guild.members.cache.get(item.id)
+
+        if (item.permissions.mute_members.status) {
+            item.permissions.mute_members.status = false;
+            item.permissions.mute_members.date = 0;
+            member.roles.remove('960895927109943306');
+        }
+        if (item.permissions.move_members.status) {
+            item.permissions.move_members.status = false;
+            item.permissions.move_members.date = 0;
+            member.roles.remove('960895931065200720');
+        }
+        if (item.permissions.private_role.private_role_id !== '0') {
+            member.roles.remove(item.permissions.private_role.private_role_id);
+        }
+
+        member.roles.cache.forEach(item => {
+            if (battle_pass_anime_names.includes(item.name)) {
+                member.roles.remove(item.id)
+            }
+        })
 
         item.save()
     })
 
     const exampleEmbed = new MessageEmbed()
         .setTitle('Дествие успешно выполненно!')
-        .setDescription('База очищена')
+        .setDescription('База очищена, роли у участников убраны)')
         .setImage('https://i.imgur.com/XKSFDmC.jpg')
         .setColor('#4fff29')
 

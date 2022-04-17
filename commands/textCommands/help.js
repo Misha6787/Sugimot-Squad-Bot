@@ -3,18 +3,18 @@ const fs = require("fs");
 module.exports = async (bot,message,args,argsF) => {
 
     const commandFiles = fs.readdirSync("./commands/textCommands");
-    const commandTextImage = fs.readdirSync("./commands/textImageCommands");
+    const commandActionsFiles = fs.readdirSync("./commands/actionsCommands");
     const Guild = await bot.Guild.findOne({id: message.guildId})
     let textCommands = [];
-    let textImageCommands = [];
+    let actionsCommands = [];
 
     for (const file of commandFiles) {
         let command = require(`./${file}`);
         if (command.type === 'for_all') textCommands += ' `' + Guild.prefix + command.names[0] + '` '
     }
-    for (const file of commandTextImage) {
-        let command = require(`../textImageCommands/${file}`);
-        if (command.type === 'text_image') textImageCommands += ' `' + Guild.prefix + command.names[0] + '` '
+    for (const file of commandActionsFiles) {
+        let command = require(`../../commands/actionsCommands/${file}`);
+        if (command.type === 'action_command') actionsCommands += ' `' + Guild.prefix + command.names[0] + '` '
     }
 
     const embed = new MessageEmbed()
@@ -26,8 +26,8 @@ module.exports = async (bot,message,args,argsF) => {
                 value: textCommands
             },
             {
-                name: 'Текстовые картинки',
-                value: textImageCommands
+                name: 'Команды действия',
+                value: actionsCommands
             }
         )
         .setImage('https://c.tenor.com/FiIpwzOalDoAAAAd/kono-suba-anime.gif')

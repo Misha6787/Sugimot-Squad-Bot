@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 module.exports = async (bot,message,args,argsF) => {
 
     let Users = await bot.User.find({guildId: message.guildId});
-    const thisUser = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
+    const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
 
     //let rolePermissions = await message.member.role.fetch('963011307785830500')
 

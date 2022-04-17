@@ -32,5 +32,5 @@ module.exports = async (bot,message,args,argsF) => {
     message.channel.send({embeds: [embed]})
 }
 
-module.exports.names = ['рейт', 'реит', 'рейтинг', 'реитинг', 'rating'];
+module.exports.names = ['рейтинг', 'реит', 'рейт', 'реитинг', 'rating'];
 module.exports.type = 'for_all';
