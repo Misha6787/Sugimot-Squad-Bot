@@ -14,7 +14,8 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
 
         User.save();
 
-        if (User.level_battle_pass % 10 === 0) {
+        if (User.level_battle_pass % 10 === 0 && User.level_battle_pass <= 100) {
+
             const battlePassLevel = await getCurrentLevel(bot, User.level_battle_pass);
 
             const elementLevel = battlePassLevel.element;
@@ -55,9 +56,11 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
             })
 
             if (previousLevelRole) {
-                await member.roles.remove(previousLevelRole.id);
+                await member.roles.remove(previousLevelRole.id)
+                    .catch(error => console.log(error));
             }
-            await member.roles.add(nextLevelRole.id);
+            await member.roles.add(nextLevelRole.id)
+                .catch(error => console.log(error));
 
             // let channelFlood = await bot.channels.fetch('777512811466981376')
             //     .then(channel => channel)

@@ -1,5 +1,6 @@
 const {MessageEmbed, User, Guild} = require("discord.js");
 const getCurrentLevel = require("../../helpers/getCurrentLevel");
+const checkLevel = require('../../helpers/checkLevel')
 const mongoose = require('mongoose')
 
 module.exports = async (bot,message,args,argsF) => {
