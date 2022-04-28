@@ -10,6 +10,28 @@ module.exports = async (bot,message,args,argsF) => {
 
     //let rolePermissions = await message.member.role.fetch('963011307785830500')
 
+    let guild = await bot.guilds.fetch('777301995803377704');
+
+
+    // Users.forEach(async (user) => {
+    //     if (new Date(user.permissions.mute_members.date) <= new Date() && user.permissions.mute_members.status) {
+    //         const member = guild.members.cache.get(user.id)
+    //         user.permissions.mute_members.status = false;
+    //         user.permissions.mute_members.date = 0;
+    //         await member.roles.remove('960895927109943306');
+    //         user.save();
+    //         console.log('lll');
+    //     } else if (new Date(user.permissions.move_members.date) <= new Date() && user.permissions.move_members.status) {
+    //         const member = guild.members.cache.get(user.id)
+    //         user.permissions.move_members.status = false;
+    //         user.permissions.move_members.date = 0;
+    //         await member.roles.remove('960895931065200720');
+    //         user.save();
+    //         console.log(user);
+    //     }
+    // })
+
+
     // let guildRole = await message.guild.roles.fetch('963011307785830481')
     // guildRole.setHoist(true)
     //     .then(updated => console.log(`Role hoisted: ${updated.hoist}`))

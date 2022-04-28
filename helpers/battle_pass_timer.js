@@ -64,22 +64,22 @@ const battlePassTimer = async (bot, deadline) => {
     //время привелегий
     setInterval(async () => {
         const Users = await bot.User.find({guildId: message.guildId});
-        Users.forEach(user => {
+        Users.forEach(async (user) => {
             if (new Date(user.permissions.mute_members.date) <= new Date() && user.permissions.mute_members.status) {
                 const member = guild.members.cache.get(user.id)
                 user.permissions.mute_members.status = false;
                 user.permissions.mute_members.date = 0;
-                member.roles.remove('960895927109943306');
+                await member.roles.remove('960895927109943306');
                 user.save();
             } else if (new Date(user.permissions.move_members.date) <= new Date() && user.permissions.move_members.status) {
                 const member = guild.members.cache.get(user.id)
                 user.permissions.move_members.status = false;
                 user.permissions.move_members.date = 0;
-                member.roles.remove('960895931065200720');
+                await member.roles.remove('960895931065200720');
                 user.save();
             }
         })
-    }, 1000*60*60);
+    }, 1000*60*60); //1000*60*60
 }
 
 module.exports = battlePassTimer

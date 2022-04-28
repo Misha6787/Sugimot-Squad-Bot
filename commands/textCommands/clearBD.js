@@ -37,7 +37,7 @@ module.exports = async (bot,message,args,argsF) => {
         }
     }
 
-    User.forEach(item => {
+    User.forEach(async (item) => {
         item.experience = 0;
         item.money = 0;
         item.countSymbol = 0;
@@ -50,20 +50,20 @@ module.exports = async (bot,message,args,argsF) => {
         if (item.permissions.mute_members.status) {
             item.permissions.mute_members.status = false;
             item.permissions.mute_members.date = 0;
-            member.roles.remove('960895927109943306');
+            await member.roles.remove('960895927109943306');
         }
         if (item.permissions.move_members.status) {
             item.permissions.move_members.status = false;
             item.permissions.move_members.date = 0;
-            member.roles.remove('960895931065200720');
+            await member.roles.remove('960895931065200720');
         }
         if (item.permissions.private_role.private_role_id !== '0') {
-            member.roles.remove(item.permissions.private_role.private_role_id);
+            await member.roles.remove(item.permissions.private_role.private_role_id);
         }
 
-        member.roles.cache.forEach(item => {
+        member.roles.cache.forEach(async (item) => {
             if (battle_pass_anime_names.includes(item.name)) {
-                member.roles.remove(item.id)
+                await member.roles.remove(item.id)
             }
         })
 
