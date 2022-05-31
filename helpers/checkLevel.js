@@ -79,7 +79,7 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
                 .setImage(`${gif}`)
                 .setColor('RANDOM')
 
-            await member.send({ embeds:  [ exampleEmbed ]});
+            //await member.send({ embeds:  [ exampleEmbed ]});
             //channelFlood.send({ embeds:  [ exampleEmbed ]});
             channelLog.send({ embeds:  [ exampleEmbed ]});
         }
