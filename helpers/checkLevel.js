@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const getCurrentLevel = require("./getCurrentLevel");
 
 const checkLevel = async (bot, userId, guildId, UserExperience) => {
@@ -36,10 +36,6 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
             const thisGuild = await bot.guilds.fetch(guildId);
             const member = await thisGuild.members.fetch(User.id)
 
-            // let member = await bot.users.fetch(userId)
-            //     .then(user => user)
-            //     .catch(console.error)
-
             member.guild.roles.cache.forEach(item => {
                 if (battlePassLevel.level === 0) {
                     if (item.name === `${battlePassLevel.level} | ${elementRole}`) {
@@ -65,11 +61,11 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
             // let channelFlood = await bot.channels.fetch('777512811466981376')
             //     .then(channel => channel)
             //     .catch(console.error)
-            let channelLog = await bot.channels.fetch('958814476335980644')
+            let channelLog = await bot.channels.fetch('952589168192671844') // 958814476335980644
                 .then(channel => channel)
                 .catch(console.error)
 
-            const exampleEmbed = new MessageEmbed()
+            const exampleEmbed = new EmbedBuilder()
                 .setTitle(`${User.name} поднял(а) уровень!`)
                 .setDescription(`
                     Поздравляем! Теперь твой уровень - **${User.level_battle_pass}**
@@ -79,9 +75,11 @@ const checkLevel = async (bot, userId, guildId, UserExperience) => {
                 .setImage(`${gif}`)
                 .setColor('RANDOM')
 
-            //await member.send({ embeds:  [ exampleEmbed ]});
+            await member.send({ embeds:  [ exampleEmbed ]}).catch(error => {console.log(error)});
             //channelFlood.send({ embeds:  [ exampleEmbed ]});
-            channelLog.send({ embeds:  [ exampleEmbed ]});
+
+            channelLog.send({ embeds:  [ exampleEmbed ]}).catch(error => {console.log(error)});
+
         }
     }
     //User.save();

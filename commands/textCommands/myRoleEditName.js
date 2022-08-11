@@ -1,4 +1,4 @@
-const {MessageEmbed} = require("discord.js");
+const {EmbedBuilder} = require("discord.js");
 module.exports = async (bot,message,args,argsF) => {
 
     // Проверки роли, и проверка на бота и т.д \\
@@ -11,22 +11,22 @@ module.exports = async (bot,message,args,argsF) => {
         }
     })
     if (ifRoles === 0) {
-        message.channel.send({
+        message.reply({
             embeds: [
                 {
-                    title: `У вас недостаточно прав!`,
-                    color: '#ff0000'
+                    title: 'У вас недостаточно прав!',
+                    color: 0xff0000
                 }
             ]
         });
         return;
     }
     if (User.permissions.private_role.private_role_id === '0') {
-        message.channel.send({
+        message.reply({
             embeds: [
                 {
-                    title: `У вас нету личной роли!`,
-                    color: '#ff0000'
+                    title: 'У вас нету личной роли!',
+                    color: 0xff0000
                 }
             ]
         });
@@ -36,30 +36,30 @@ module.exports = async (bot,message,args,argsF) => {
 
     // ================================= \\
 
-    let roleName = args.length > 1 ? args.join(' ') : args[0];
+    let roleName = args.name;
 
     let roleDuplicate;
 
-    if (args[0] === undefined) {
-        message.channel.send({
-            embeds: [
-                {
-                    title: `Помошник по командам`,
-                    description: `
-                        Для изменения личной роли необходимо задать имя
-                       
-                        **Пример: 
-                        \`?имяРоли MyBestRole\`
-                        или
-                        \`?nameRole MyAwesomeRole\`
-                        **
-                    `,
-                    color: '#f7ff00'
-                }
-            ]
-        });
-        return;
-    }
+    // if (args.name === undefined) {
+    //     message.reply({
+    //         embeds: [
+    //             {
+    //                 title: 'Помошник по командам',
+    //                 description: `
+    //                     Для изменения личной роли необходимо задать имя
+    //
+    //                     **Пример:
+    //                     \`?имяРоли MyBestRole\`
+    //                     или
+    //                     \`?nameRole MyAwesomeRole\`
+    //                     **
+    //                 `,
+    //                 color: 0xf7ff00
+    //             }
+    //         ]
+    //     });
+    //     return;
+    // }
 
     message.member.guild.roles.cache.forEach(item => {
         if (item.name === roleName) {
@@ -68,12 +68,12 @@ module.exports = async (bot,message,args,argsF) => {
     })
 
     if (roleDuplicate) {
-        message.channel.send({
+        message.reply({
             embeds: [
                 {
-                    title: `Роль с таким именем уже существует`,
-                    description: 'Чееееел придумай что-то оригинальное, к примеру **Адепт Гачи, Столп Дискорда, -=$DotaMasterSuperCool228$=-**',
-                    color: '#f7ff00'
+                    title: 'Роль с таким именем уже существует',
+                    description: 'Чееееел придумай что-то оригинальное, к примеру **Адепт Гачи, Столп Дискорда, -=$PussyEater$=-**',
+                    color: 0xf7ff00
                 }
             ]
         });
@@ -81,11 +81,11 @@ module.exports = async (bot,message,args,argsF) => {
     }
 
     if (roleName.length > 24 ) {
-        message.channel.send({
+        message.reply({
             embeds: [
                 {
-                    title: `Слишком длинное название роли!`,
-                    color: '#f7ff00'
+                    title: 'Слишком длинное название роли!',
+                    color: 0xf7ff000
                 }
             ]
         });
@@ -99,18 +99,30 @@ module.exports = async (bot,message,args,argsF) => {
 
     message.guild.roles.edit(User.permissions.private_role.private_role_id, {name: roleName})
         .then(role => {
-            message.channel.send({
+            message.reply({
                 embeds: [
                     {
-                        title: `Персональная роль успешно изменена!`,
+                        title: 'Персональная роль успешно изменена!',
                         description: `Была изменена роль <@&${role.id}> игрока <@${message.author.id}>`,
-                        color: '#4fff29'
+                        color: 0x4fff29
                     }
                 ]
             })
-        })
-        .catch(console.error);
+        }).catch(error => console.log(error));
 }
 
 module.exports.names = ['имяроли', 'namerole'];
+module.exports.interaction = { //И слэш команда
+    name: 'имяроли', //И название должно быть такое, как у команды
+    description: 'Ты можете изменить имя своей роли',
+    options: [
+        {
+            name: 'name',
+            description: 'Имя твоей роли (максимум 24 символа)',
+            type: 3,
+            required: true
+        }
+    ],
+    defaultPermission: true //Про слэш команды можно узнать из документации
+};
 module.exports.type = 'for_all';

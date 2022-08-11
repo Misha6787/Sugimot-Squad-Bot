@@ -1,14 +1,14 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = async (bot,message,args,argsF) => {
 
     const Users = await bot.User.find({guildId: message.guildId});
     const Guild = await bot.guilds.fetch(message.guildId);
-    function sortByAge(arr) {
+    function sortByLevel(arr) {
         return arr.sort((a, b) => a.level_battle_pass < b.level_battle_pass ? 1 : -1);
     }
 
-    const sortedUsers = sortByAge(Users)
+    const sortedUsers = sortByLevel(Users)
 
     const ratingUsers = sortedUsers.slice(0, 10)
 
@@ -21,16 +21,21 @@ module.exports = async (bot,message,args,argsF) => {
         })
     })
 
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
         .setTitle('Рейтинг участников')
         .setFields(fieldsItems)
-        .setColor("RANDOM")
+        .setColor(0x9900ff)
         .setThumbnail(Guild.iconURL())
         .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
         .setTimestamp()
 
-    message.channel.send({embeds: [embed]})
+    message.reply({embeds: [embed]})
 }
 
 module.exports.names = ['рейтинг', 'реит', 'рейт', 'реитинг', 'rating'];
+module.exports.interaction = { //И слэш команда
+    name: 'рейтинг', //И название должно быть такое, как у команды
+    description: 'Рэйтинг участников нашего сервера!',
+    defaultPermission: true //Про слэш команды можно узнать из документации
+};
 module.exports.type = 'for_all';

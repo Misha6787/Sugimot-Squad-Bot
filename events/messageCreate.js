@@ -1,32 +1,58 @@
+const checkLevel = require("../helpers/checkLevel");
+const {EmbedBuilder} = require("discord.js");
+
 module.exports = async (bot, message) => {
+    // Проверки роли, бота и т.д \\
+
     if (message.author.bot) return;
+    if (message.content.substr(0, 4) === 'http') return
 
-    const {content, author, guild} = message;
+    // ================================= \\
 
-    // const User = await bot.Users.findOne({id: author.id})
-    // console.log(User)
-    // if (User == null) {
-    //     const newUser = new bot.Users({
-    //         id: author.id,
-    //         username: author.username
-    //     })
-    //     newUser.save()
-    // }
+    const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId})
 
-    const Guild = await bot.Guild.findOne({id: message.guildId});
+    if (User === null) return;
 
-    if (content.substr(0, Guild.prefix.length) !== Guild.prefix) return;
+    let symbols = message.content.replace(/\s+/g, '').length + User.countSymbol
 
-    const
-        messageArray = content.slice(Guild.prefix.length).split(' '),
-        command = messageArray[0].toLowerCase(),
-        args = messageArray.slice(1),
-        messageArrayFull = content.split(' '),
-        argsF = messageArrayFull.slice(1),
-        commandRun = bot.commands.get(command);
+    //await getCurrentLevel(bot, message.author.id, message.guildId)
 
-    if (commandRun) commandRun(bot,message,args,argsF)
-        //.then(any => console.log(any))
-        .catch(err => console.error(err))
+    if (symbols >= 500) {
+        symbols -= 500
+        User.money += 10
+        User.experience += 75;
 
-}
+        User.countSymbol = symbols;
+
+        User.save();
+
+        await checkLevel(bot, message.author.id, message.guildId, User.experience)
+
+        let channelLog = await bot.channels.fetch('952589168192671844') // 958814476335980644
+            .then(channel => channel)
+            .catch(console.error)
+
+        let GuildMember = message.guild.members.cache.get(User.id).user
+
+        const exampleEmbed = new EmbedBuilder()
+            .setTitle(`Текстовые каналы`)
+            .setDescription(`
+Участник <@${User.id}> получил койны
+
+Уровень БП: **${User.level_battle_pass}**
+Опыт: **${User.experience}**
+Деньги: **${User.money}**
+                        `)
+            .setThumbnail(`https://cdn.discordapp.com/avatars/${GuildMember.id}/${GuildMember.avatar}`)
+            .setTimestamp()
+            .setColor('#C561D3')
+
+        if (bot.isDev) {
+            channelLog.send({ embeds:  [ exampleEmbed ]}).catch(error => {console.log(error)});
+        }
+
+    } else {
+        User.countSymbol = symbols;
+        User.save();
+    }
+};

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require("discord.js");
 const getCurrentLevel = require('../../helpers/getCurrentLevel')
 
 module.exports = async (bot,message,args,argsF) => {
@@ -9,7 +9,7 @@ module.exports = async (bot,message,args,argsF) => {
     let battle_pass = false;
     message.member.roles.cache.forEach(item => {
         if (item.id === '944259753587126333') {
-            battle_pass = true
+            battle_pass = true;
         }
         // if (item.id === '777322473523249182' ||
         //     item.id === '900529098571546654' ||
@@ -24,8 +24,8 @@ module.exports = async (bot,message,args,argsF) => {
     //     message.channel.send({
     //         embeds: [
     //             {
-    //                 title: `У вас недостаточно прав!`,
-    //                 color: '#ff0000'
+    //                 title: 'У вас недостаточно прав!',
+    //                 color: 0xff0000
     //             }
     //         ]
     //     })
@@ -46,38 +46,48 @@ module.exports = async (bot,message,args,argsF) => {
     let gif = elementLevel.profileGif ? elementLevel.profileGif : 'https://i.imgur.com/eHX2Nbc.png';
 
     const if_Battle_pass = battle_pass ? `
-                        **Уровень боевого пропуска:** ${User.level_battle_pass}
-                        **Опыт:** ${User.experience}
-                        **Опыт до следующего уровня:** ${(1000 + 100 * User.level_battle_pass) - User.experience}
-                        **Sugimoto Coins:** ${balance}
-                    ` : `
-                            **Sugimoto Coins:** ${balance}
-                        `
+**Уровень боевого пропуска:** ${User.level_battle_pass}
+**Опыт:** ${User.experience}
+**Опыт до следующего уровня:** ${(1000 + 100 * User.level_battle_pass) - User.experience}
+**Sugimoto Coins:** ${balance}
+` : `
+**Sugimoto Coins:** ${balance}
+`
     const dateCreatedAt = Math.floor(new Date(message.author.createdAt).getTime()/1000),
         dateJoinedAt = Math.floor(new Date(message.member.joinedAt).getTime()/1000);
 
-     const exampleEmbedImage = new MessageEmbed()
+    const exampleEmbedImage = new EmbedBuilder()
          .setImage(gif)
-         .setColor('#2f3136')
-    const exampleEmbed = new MessageEmbed()
+         .setColor(0x2f3136)
+    const exampleEmbed = new EmbedBuilder()
         .setTitle('Основная информация: ')
         .setDescription(`
-                    **Имя пользователя:** ${User.name}#${message.author.discriminator}
-                    **Дата регистрации: ** <t:${dateCreatedAt}:D> (<t:${dateCreatedAt}:R>)
-                    **Присоединился:** <t:${dateJoinedAt}:D> (<t:${dateJoinedAt}:R>)`
-                    + if_Battle_pass +
-                    '\u200b'
+**Имя пользователя:** ${User.name}#${message.author.discriminator} (${message.member.nickname})
+**Дата регистрации: ** <t:${dateCreatedAt}:D> (<t:${dateCreatedAt}:R>)
+**Присоединился:** <t:${dateJoinedAt}:D> (<t:${dateJoinedAt}:R>)`
++ if_Battle_pass +
+'\u200b'
         )
         .setThumbnail(message.author.avatarURL())
         //.setImage(gif)
-        .setAuthor(`Сегодня о ${message.member.nickname}`, message.author.avatarURL())
+        .setAuthor({
+            name: `Сегодня о ${message.member.nickname ? message.member.nickname : message.user.username}`,
+            iconURL: message.author.avatarURL()
+        })
         .setTimestamp()
-        .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
-        .setColor('#2f3136')
+        .setFooter({
+            text: Guild.name,
+            iconURL: Guild.iconURL()
+        })
+        .setColor(0x2f3136)
 
-    message.channel.send({ embeds:  [ exampleEmbed, exampleEmbedImage ]});
-
+    message.reply({ embeds:  [ exampleEmbed, exampleEmbedImage ]});
 }
 
 module.exports.names = ['профиль', 'profile'];
+module.exports.interaction = { //И слэш команда
+    name: 'профиль', //И название должно быть такое, как у команды
+    description: 'Посмотри на свой профиль!',
+    defaultPermission: true //Про слэш команды можно узнать из документации
+};
 module.exports.type = 'for_all';

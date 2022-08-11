@@ -9,15 +9,15 @@ module.exports = async (bot,message,args,argsF) => {
             item.id === '777304185380274206' ||
             item.id === '777304566844751902' ||
             item.id === '944259753587126333') {
-            ifRoles++
+            ifRoles++;
         }
     });
     if (ifRoles === 0) {
-        message.channel.send({
+        message.reply({
             embeds: [
                 {
-                    title: `У вас недостаточно прав!`,
-                    color: '#ff0000'
+                    title: 'У вас недостаточно прав!',
+                    color: 0xff0000
                 }
             ]
         });
@@ -28,45 +28,32 @@ module.exports = async (bot,message,args,argsF) => {
 
     const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
 
-    if (args[0] !== undefined) {
-        let balance = Number(User.money);
-        User.money = balance + Number(args[0])
-        message.channel.send({
-            embeds: [{
-                title: 'Результат',
-                description:  `Вы получили **${args[0]}$** \nВаш баланс: **${User.money}$**`,
-                color: 'RANDOM'
-            }]
-        });
-        User.save()
-    } else {
-        message.channel.send({
-            embeds: [
-                {
-                    title: `Введите необходимую сумму!`,
-                    color: '#ff0000'
-                }
-            ]
-        });
-    }
+    let balance = +User.money;
+    User.money = balance + +args.coins;
+    message.reply({
+        embeds: [{
+            title: 'Результат',
+            description:  `Вы получили **${args.coins} Sugimoto Coins** \nВаш баланс: **${User.money} Sugimoto Coins**`,
+            color: 0x00FF00
+        }]
+    });
+    User.save();
+
 }
 
-module.exports.names = ['получитькойны', 'получитькоины', 'moneygrind'];
+module.exports.names = ['получитькойны', 'getcoins', 'получитькоины'];
+module.exports.interaction = { //И слэш команда
+    name: 'получитькойны', //И название должно быть такое, как у команды
+    description: 'Это только для админов)',
+    options: [
+        {
+            name: 'coins', // писать только в нижнем регистре
+            description: 'Кол-во выдаваемых койнов',
+            type: 4,
+            required: true
+        }
+    ],
+    defaultPermission: 0 //Про слэш команды можно узнать из документации
+};
 module.exports.type = 'moderation';
 
-// текстовые каналы 500 символов = 10 монет
-// гс чат 1 час = 50 монет
-
-// 1р = под вопросом
-
-// Могут перемещать и мутить
-// Своя роль
-// Своя роль
-// Вип канал
-// Каждый месяц разная тематика випов и их названия каждый сезон отсылка к разному анимэ
-// Кланы будут относиться к сетингку анимэ сезона
-// Монеты можно потратить на анимэ сезона
-// У каждого сезона свое анимэ
-// Нужно найти 12 анимэ которые будут сменять друг друга каждый месяц по сезонам
-// Менять текст бота на фразы анимэ
-// Фан сервис, когда повышаешь уровень в сообщений будет фан сервис гифка под тематику сезона

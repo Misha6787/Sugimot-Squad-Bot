@@ -1,33 +1,21 @@
-const Discord = require('discord.js');
-let fs = require('fs');
-let config = require('./config.json');
-const mongoose = require('mongoose')
+const {IntentsBitField, Partials, Client} = require('discord.js'),
+    config = require('./config.json'),
+    mongoose = require('mongoose');
+
+config.cfg = {
+    ...config.cfg,
+    intents: new IntentsBitField(config.cfg.intents),
+    partials: [Partials.Channel]
+};
+
+const bot = new Client(config.cfg);
+bot.login(config.token);
+bot.isDev = config.isDev;
+
 mongoose.connect(config.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-
-const path = require('path');
-
-config.cfg.intents = new Discord.Intents(config.cfg.intents);
-
-const bot = new Discord.Client(config.cfg);
-
-//const { Intents } = require("discord.js")
-//const bot = new Discord.Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS]})
-//other intents may be added. Make sure it has server members intent (Intents.FLAGS.GUILD_MEMBERS)
-
-
-// const bot = new Discord.Client({ ws: { intents: Discord.Intents.ALL } })
-
-bot.login(config.token);
-
-const Guild = require('./schema/guild_Schema')
-const User = require('./schema/user_Schema')
-const Month_lvl = require('./schema/monthlvl_Schema')
-const Permissions_battle_pass = require('./schema/permissions_battle_pass_Schema')
-
-const AnimeMonth = async () => await Month_lvl.findOne({ month: config.anime_month });
 
 const dbConnection = mongoose.connection;
 
@@ -38,49 +26,17 @@ dbConnection.once('open', () => {
     console.log('we are connected')
 });
 
+const Guild = require('./schema/guild_Schema'),
+    User = require('./schema/user_Schema'),
+    Month_lvl = require('./schema/monthlvl_Schema'),
+    Permissions_battle_pass = require('./schema/permissions_battle_pass_Schema');
+
+const AnimeMonth = async () => await Month_lvl.findOne({ month: config.anime_month });
+
 bot.Guild = Guild;
 bot.User = User;
 bot.AnimeMonth = AnimeMonth();
 bot.Permissions_battle_pass = Permissions_battle_pass;
-//console.log(path.resolve(__dirname, 'commands/backgroundEvents/voiceToЕxperienceAndMoney'))
 
-//console.log(bot.AnimeMonth)
-
-require("./events/index")(bot);
-
-bot.commands = new Discord.Collection();
-
-// Добовление обычных команд
-const commandFiles = fs.readdirSync("./commands/textCommands");
-
-for (const file of commandFiles) {
-    let command = require(`./commands/textCommands/${file}`);
-    command.names.forEach(el => {
-        bot.commands.set(el, command);
-    });
-}
-
-// Добовление команд действия
-const actionsCommandsFiles = fs.readdirSync("./commands/actionsCommands");
-
-for (const file of actionsCommandsFiles) {
-    let command = require(`./commands/actionsCommands/${file}`);
-    command.names.forEach(el => {
-        bot.commands.set(el, command);
-    })
-}
-
-// Добовление таймера окончания баттл паса
-const battlePassTimer = require('./helpers/battle_pass_timer');
-const deadline = config.dead_line_battle_pass;
-
-(async function () {
-    await battlePassTimer(bot, deadline)
-})()
-
-
-
-
-
-//const getTimer = async () => await battlePassTimer();
-
+require('./handlers')(bot); //Запуск handler'ов
+require('./events')(bot); //Запуск ивентов

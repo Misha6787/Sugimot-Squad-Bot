@@ -1,8 +1,9 @@
 {
-    "token" : "OTIzMjA0NTA5ODYwMjU3ODE0.YcMnMw.Lva5cTbyLq4xAO94QnP8U9J72XE",
+    "token": "OTQ0MjI4OTIxNTQzNjQ3Mjcy.Gm82uK.cWebiQo7o5VK9DLO6kdDZ_J-G662NK76eiHHjw",
     "mongo_url": "mongodb+srv://admin:MJKhqf6GtiOYs3YVjJvb@cluster0.6tyuh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "anime_month": "1",
     "dead_line_battle_pass": "30 april 2022 01:15",
+    "isDev": "true",
     "actions_gif": {
         "call_command_gif": [
             "https://c.tenor.com/7xh8CROljNAAAAAC/inosuke-demon-slayer.gif",
@@ -13,20 +14,21 @@
     },
     "cfg": {
         "intents": [
-            "GUILDS",
-            "GUILD_BANS",
-            "GUILD_EMOJIS_AND_STICKERS",
-            "GUILD_INTEGRATIONS",
-            "GUILD_WEBHOOKS",
-            "GUILD_INVITES",
-            "GUILD_VOICE_STATES",
-            "GUILD_MESSAGES",
-            "GUILD_MESSAGE_REACTIONS",
-            "GUILD_MESSAGE_TYPING",
-            "GUILD_MEMBERS",
-            "DIRECT_MESSAGES",
-            "DIRECT_MESSAGE_REACTIONS",
-            "DIRECT_MESSAGE_TYPING"
+            "MessageContent",
+            "Guilds",
+            "GuildBans",
+            "GuildEmojisAndStickers",
+            "GuildIntegrations",
+            "GuildWebhooks",
+            "GuildInvites",
+            "GuildVoiceStates",
+            "GuildMessages",
+            "GuildMessageReactions",
+            "GuildMessageTyping",
+            "GuildMembers",
+            "DirectMessages",
+            "DirectMessageReactions",
+            "DirectMessageTyping"
         ]
     }
 }

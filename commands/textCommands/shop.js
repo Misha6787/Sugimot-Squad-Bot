@@ -1,4 +1,5 @@
-const {MessageEmbed, MessageSelectMenu, MessageActionRow} = require("discord.js");
+const {EmbedBuilder, SelectMenuBuilder, ActionRowBuilder} = require("discord.js");
+
 module.exports = async (bot,message,args,argsF) => {
 
     const User = await bot.User.findOne({id: message.author.id, guildId: message.guildId});
@@ -37,29 +38,34 @@ module.exports = async (bot,message,args,argsF) => {
         })
     })
 
-    const selectMenu = new MessageSelectMenu()
+    const selectMenu = new SelectMenuBuilder()
         .setCustomId('select')
         .setPlaceholder('Ничего не выбрано')
         .addOptions(options)
         .setMaxValues(1);
-    const menu = new MessageActionRow()
+    const menu = new ActionRowBuilder()
         .addComponents(selectMenu);
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
         .setTitle('Добро пожаловать в Магазинчик Sugimoto!')
         .setDescription('Выберите интересующую вас привелегию в выпадающем списке')
         .setFields(fieldsItems)
-        .setColor('#2f3136')
+        .setColor(0x9900ff)
         .setFooter({ text: Guild.name, iconURL: Guild.iconURL() })
         .setTimestamp()
 
-    message.channel.send({
+    message.reply({
         embeds: [
             embed
         ],
         components: [menu]
-    });
+    }).catch(error => {console.log(error)});
 }
 
-module.exports.names = ['магазин', 'магаз'];
+module.exports.names = ['магазин', 'shop', 'магаз']; //У неё есть название
+module.exports.interaction = { //И слэш команда
+    name: 'магазин', //И название должно быть такое, как у команды
+    description: 'Магазинчик нашего сервера)',
+    defaultPermission: true //Про слэш команды можно узнать из документации
+};
 module.exports.type = 'for_all';

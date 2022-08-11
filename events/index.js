@@ -1,25 +1,13 @@
-module.exports = bot => {
-    bot
-        .on('ready', () => require("./ready")(bot))
-        .on('messageCreate', (message) => {
-            if (message.author.bot) return;
-            require("./messageCreate")(bot, message)
-        })
-        .on('messageCreate', (message) => {
-            if (message.author.bot) return;
-            require("../commands/backgroundEvents/textToMoneyAndExperience")(bot, message)
-        })
-        .on('messageCreate', (message) => {
-            if (message.author.bot) return;
-            require("../commands/backgroundEvents/addWriteNewMember")(bot, message)
-        })
-        .on('interactionCreate', async (interaction) => {
-            await require("../commands/interactionCommands/selectedMenu")(bot, interaction)
-        })
-        .on('guildMemberAdd', async (newMember) => {
-            await require("../commands/backgroundEvents/addWentNewMember")(bot, newMember)
-        })
-        .on('voiceStateUpdate', (oldState, newState) => {
-            require("../commands/backgroundEvents/voiceToЕxperienceAndMoney")(bot, oldState, newState)
-        })
-}
+const fs = require('fs');
+module.exports = (bot) => {
+    const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+    for (const file of eventFiles) {
+        const event = require(`./${file}`);
+        const name = file.slice(0,-3);
+        bot.on(name, (...args) => event(bot, ...args));
+    }
+    
+    process
+        .on('unhandledRejection', err => require('./unhandledRejection')(bot, err))
+        .on('uncaughtException', err => require('./uncaughtException')(bot, err));
+};
